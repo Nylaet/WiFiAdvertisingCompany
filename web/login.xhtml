@@ -1,73 +1,55 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>WiFi Advertising Company</title>
+        <title>WiFi Promotion Group</title>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
         <h:outputStylesheet library="css" name="login.css"/>
         <h:outputStylesheet library="css" name="site_global.css"/>
-        <h:outputStylesheet library="css" name="master-a.css"/>
+        
     </h:head>
     <h:body>
+        <p:growl autoUpdate="true" />        
         <div class="clearfix borderbox" id="page"><!-- group -->
-            <div class="clearfix grpelem" id="pu563"><!-- group -->
-                <div id="u563"><!-- simple frame --></div>
-                <div class="Button transition shadow clearfix" id="buttonu564"><!-- container box -->
-                    <div class="clip_frame grpelem" id="u565"><!-- image -->
-                        <img class="block" id="u565_img" src="resources/images/pageContent/wifi-segoi3-gray.png" alt="" data-image-width="48" data-image-height="48"/>
-                    </div>
-                    <img class="grpelem" id="u567-4" alt="Точки доступа" src="resources/images/pageContent/u567-4.png" data-image-width="134"/><!-- rasterized frame -->
-                </div>
-                <div class="Button transition shadow clearfix" id="buttonu568"><!-- container box -->
-                    <div class="clip_frame grpelem" id="u569"><!-- image -->
-                        <img class="block" id="u569_img" src="resources/images/pageContent/templates-gray.png" alt="" data-image-width="48" data-image-height="48"/>
-                    </div>
-                    <img class="grpelem" id="u571-4" alt="Макеты" src="resources/images/pageContent/u571-4.png" data-image-width="134"/><!-- rasterized frame -->
-                </div>
-                <div class="Button transition shadow clearfix" id="buttonu572"><!-- container box -->
-                    <div class="clip_frame grpelem" id="u574"><!-- image -->
-                        <img class="block" id="u574_img" src="resources/images/pageContent/happy_users.png" alt="" data-image-width="48" data-image-height="48"/>
-                    </div>
-                    <img class="grpelem" id="u573-4" alt="Клиенты" src="resources/images/pageContent/u573-4.png" data-image-width="135"/><!-- rasterized frame -->
-                </div>
-                <div class="Button transition shadow clearfix" id="buttonu576"><!-- container box -->
-                    <div class="clip_frame grpelem" id="u578"><!-- image -->
-                        <img class="block" id="u578_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
-                    </div>
-                    <img class="grpelem" id="u577-4" alt="Администрирование" src="resources/images/pageContent/u577-4.png" data-image-width="163"/><!-- rasterized frame -->
-                </div>
+            <div id="u651-wrapper">
+                <div id="u651"><!-- simple frame --></div>
             </div>
-            <div class="Button transition shadow clearfix" id="buttonu580"><!-- container box -->
-                <div class="clip_frame grpelem" id="u581"><!-- image -->
-                    <img class="block" id="u581_img" src="resources/images/pageContent/login-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
+            <div id="u654-wrapper">
+                <div class="rounded-corners" id="u654"><!-- simple frame --></div>
+            </div>
+            <h:form>
+                <div id="u657-4-wrapper">
+                    <img id="u657-4" alt="Авторизация" src="resources/images/pageContent/u657-4.png" data-image-width="233"/><!-- rasterized frame -->
                 </div>
-                <img class="grpelem" id="u583-4" alt="Вход" src="resources/images/pageContent/u583-4.png" data-image-width="134"/><!-- rasterized frame -->
-            </div>
-            <div class="rounded-corners clearfix grpelem" id="u651"><!-- group -->
-                <div class="rounded-corners grpelem" id="u654"><!-- simple frame --></div>
-            </div>
-            <div class="clearfix grpelem" id="pu657-4"><!-- column -->
-                <h:form>
-                    <img class="colelem" id="u657-4" alt="Авторизация" src="resources/images/pageContent/u657-4.png" data-image-width="233"/><!-- rasterized frame -->
-                    <img class="colelem" id="u660-4" alt="Логин :" src="resources/images/pageContent/u660-4.png" data-image-width="78"/><!-- rasterized frame -->
-                    <div class="colelem" id="u663" style="text-align: center;border: 1px solid rgb(77, 154, 106);"><!-- simple frame -->
-                        <h:inputText value="#{loginController.current.login}" style="text-align: center" />
+                <div id="u660-4-wrapper">
+                    <img id="u660-4" alt="Логин :" src="resources/images/pageContent/u660-4.png" data-image-width="78"/><!-- rasterized frame -->
+                </div>
+                <div id="u663-wrapper">
+                    <div id="u663" style="text-align: center;border: 1px solid rgb(77, 154, 106);"><!-- JSF content -->
+                        <h:inputText value="#{loginController.current.login}" style="text-align: center;" />
                     </div>
-                    <img class="colelem" id="u666-4" alt="Пароль :" src="resources/images/pageContent/u666-4.png" data-image-width="78"/><!-- rasterized frame -->
-                    <div class="colelem" id="u667" style="text-align: center;border: 1px solid rgb(77, 154, 106);"><!-- simple frame -->
+                </div>
+                <div id="u666-4-wrapper">
+                    <img id="u666-4" alt="Пароль :" src="resources/images/pageContent/u666-4.png" data-image-width="78"/><!-- rasterized frame -->
+                </div>
+                <div id="u667-wrapper">
+                    <div id="u667" style="text-align: center;border: 1px solid rgb(77, 154, 106);"><!-- JSF content -->
                         <h:inputSecret value="#{loginController.current.password}" style="text-align: center" />
                     </div>
+                </div>
+                <div id="buttonu672-wrapper"><!-- JSF content -->
                     <h:commandLink action="#{loginController.login()}">
-                        <div class="Button transition rounded-corners clearfix colelem" id="buttonu672"><!-- container box -->
+                        <div class="Button transition rounded-corners clearfix" id="buttonu672"><!-- container box -->
                             <div class="clip_frame colelem" id="u682"><!-- image -->
                                 <img class="block" id="u682_img" src="resources/images/pageContent/user-gray.png" alt="" data-image-width="52" data-image-height="52"/>
                             </div>
                             <img class="colelem" id="u692-4" alt="Log in" src="resources/images/pageContent/u692-4.png" data-image-width="52"/><!-- rasterized frame -->
                         </div>
                     </h:commandLink>
-                </h:form>
-            </div>
+                </div>
+            </h:form>
             <div class="verticalspacer"></div>
         </div>
     </h:body>
