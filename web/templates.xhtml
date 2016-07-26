@@ -40,7 +40,7 @@
                     <div class="clip_frame grpelem" id="u740"><!-- image -->
                         <img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
                     </div>
-                    <img class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame -->
+                    <img hidden="#{!loginController.admin}" class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame -->
                 </a>
             </div>
             <div class="clearfix grpelem" id="pbuttonu743"><!-- group -->
@@ -105,12 +105,16 @@
                     </c:if>
                 </div>
             </div>
-            <div class="Button transition shadow clearfix" id="buttonu1156"><!-- container box -->
-                <div class="clip_frame grpelem" id="u1169"><!-- image -->
-                    <img class="block" id="u1169_img" src="resources/images/pageContent/add-gray.png" alt="" data-image-width="52" data-image-height="52"/>
-                </div>
-                <img class="grpelem" id="u1171-4" alt="Добавить макет" src="resources/images/pageContent/u1171-4.png" data-image-width="171"/><!-- rasterized frame -->
-            </div>
+            <h:form>
+                <h:commandLink value="addTemplate.xhtml?faces-redirect=true" rendered="#{loginController.entered}">
+                    <div class="Button transition shadow clearfix" id="buttonu1156"><!-- container box -->
+                        <div class="clip_frame grpelem" id="u1169"><!-- image -->
+                            <img class="block" id="u1169_img" src="resources/images/pageContent/add-gray.png" alt="" data-image-width="52" data-image-height="52"/>
+                        </div>
+                        <img class="grpelem" id="u1171-4" alt="Добавить макет" src="resources/images/pageContent/u1171-4.png" data-image-width="171"/><!-- rasterized frame -->
+                    </div>
+                </h:commandLink>
+            </h:form>
             <div class="verticalspacer"></div>
         </div>
     </h:body>
