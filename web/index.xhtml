@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>WiFi Advertising Company</title>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+        <h:outputStylesheet library="css" name="index.css"/>
+        <h:outputStylesheet library="css" name="site_grobal.css"/>
+    </h:head>
+    <h:body>
+        <div class="clearfix borderbox" id="page"><!-- group -->
+            <div id="u1118-wrapper">
+                <div class="rgba-background" id="u1118"><!-- simple frame -->
+                    <h:graphicImage library="images" name="apImage/full/#{indexController.apFullImage}" style="width: 100%;max-height: 64px;" />
+                </div>
+            </div>
+            <div id="u1124-wrapper">
+                <div class="rgba-background" id="u1124" style="text-align: center"><!-- simple frame -->
+                    
+                        <a href="http://google.com" target="_blank">
+                            <h:graphicImage library="images" name="pageContent/Google.png" style="max-width: 80%;max-height: 52px" />
+                        </a>
+                    
+                </div>
+            </div>
+            <div id="u1298-wrapper">
+                <div class="clearfix" id="u1298"><!-- group -->
+                    <h:form>
+                        <div id="buttonu1248-wrapper">
+                            <p:commandLink update="advImage" >
+                                <div class="Button clearfix" id="buttonu1248"><!-- container box -->
+                                    <div class="clip_frame grpelem" id="u1258" ><!-- image -->
+                                        <h:graphicImage library="images" name="pageContent/prew.png" class="block" id="u1258_img" style="width: 47;height: 47" />
+                                    </div>
+                                </div>
+                            </p:commandLink>
+                        </div>
+                        <div id="u1121-wrapper">
+                            <div class="rgba-background" id="u1121" style="text-align: center"><!-- simple frame -->
+                                <p:poll update="advImage" delay="#{indexController.speedRenew}" />
+                                <h:graphicImage library="images" name="advertImages/full/#{indexController.modelNameFull}" id="advImage" style="max-width:1024px;max-height: 480px" />
+                            </div>
+                        </div>
+                        <div id="buttonu1268-wrapper">
+                            <p:commandLink update="advImage" >
+                                <div class="Button clearfix" id="buttonu1268"><!-- container box -->
+                                    <div class="clip_frame grpelem" id="u1288"><!-- image -->
+                                        <h:graphicImage library="images" name="pageContent/next.png" class="block" id="u1288_img" style="width: 47;height: 47" />
+                                    </div>
+                                </div>
+                            </p:commandLink>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+            <div class="verticalspacer"></div>
+        </div>
+    </h:body>
+</html>
+

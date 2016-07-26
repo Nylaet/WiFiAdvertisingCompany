@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>WiFi Advertising Company</title>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+        <h:outputStylesheet library="css" name="templates.css"/>
+        <h:outputStylesheet library="css" name="site_global.css"/>
+        <h:outputStylesheet library="css" name="master-b.css"/>
+    </h:head>
+    <h:body>
+        <div class="clearfix borderbox" id="page"><!-- group -->
+            <div class="clearfix grpelem" id="pu817"><!-- group -->
+                <div class="browser_width" id="u817-bw">
+                    <div id="u817"><!-- simple frame --></div>
+                </div>
+                <div id="u726"><!-- simple frame --></div>
+                <a class="nonblock nontext Button transition clearfix" id="buttonu727" href="accesspoints.xhtml"><!-- container box --><div class="clip_frame grpelem" id="u729"><!-- image --><img class="block" id="u729_img" src="resources/images/pageContent/wifi-segoi3-gray.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u728-4" alt="Точки доступа" src="resources/images/pageContent/u728-4.png" data-image-width="134"/><!-- rasterized frame -->
+                </a>
+                <a class="nonblock nontext Button ButtonSelected transition clearfix" id="buttonu731" href="templates.xhtml"><!-- container box --><div class="clip_frame grpelem" id="u733"><!-- image --><img class="block" id="u733_img" src="resources/images/pageContent/templates-gray.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u732-4" alt="Макеты" src="resources/images/pageContent/u732-4.png" data-image-width="135"/><!-- rasterized frame --></a>
+                <a class="nonblock nontext Button transition clearfix" id="buttonu735" href="clients.xhtml"><!-- container box --><div class="clip_frame grpelem" id="u736"><!-- image --><img class="block" id="u736_img" src="resources/images/pageContent/happy_users.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u738-4" alt="Клиенты" src="resources/images/pageContent/u738-4.png" data-image-width="135"/><!-- rasterized frame --></a>
+                <a class="nonblock nontext Button transition clearfix" id="buttonu739" href="adminpage.xhtml"><!-- container box --><div class="clip_frame grpelem" id="u740"><!-- image --><img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame --></a>
+            </div>
+            <h:form>
+                <h:commandLink action="#{loginController.logout()}">
+                    <div class="Button transition clearfix" id="buttonu743"><!-- container box -->
+                        <div class="clip_frame grpelem" id="u744"><!-- image -->
+                            <img class="block" id="u744_img" src="resources/images/pageContent/login-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
+                        </div>
+                        <img class="grpelem" id="u746-4" alt="Выход" src="resources/images/pageContent/u746-4.png" data-image-width="134"/><!-- rasterized frame -->
+                    </div>
+                </h:commandLink>
+            </h:form>
+            <div id="u1103-wrapper">
+                <div id="u1103"><!-- JSF content -->
+                    <c:if test="#{loginController.entered}">
+                        
+                        <h:form>
+                            <c:forEach items="#{templatesCntroller.clients}" var="client">
+                                <p:panel toggleable="true" collapsed="true" header="#{client.name}" id="model">
+                                    <c:forEach items="#{client.models}" var="model">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <h:graphicImage library="images" name="advertImages/full/#{model.nameFullSize}" style="max-width: 340px;max-height: 64px;" alt="Не назначено" />
+                                                    <p>Рекомендуемые размеры 1024х520</p>
+                                                </td>
+                                                <td>
+                                                    <h:graphicImage library="images" name="advertImages/tablet/#{model.nameTabletSize}" style="max-width: 170px;max-height: 64px;" alt="Не назначено" />
+                                                    <p>Рекомендуемые размеры 640х300</p>
+                                                </td>
+                                                <td>
+                                                    <h:graphicImage library="images" name="advertImages/phone/#{model.namePhoneSize}" style="max-width: 85px;max-height: 64px;" alt="Не назначено" />
+                                                    <p>Рекомендуемые размеры 480x190</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{templatesCntroller.setNewFullImage}" update="model"/>
+                                                </td>
+                                                <td>
+                                                    <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{templatesCntroller.setNewTabletImage}" update="model"/>
+                                                </td>
+                                                <td>
+                                                    <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{templatesCntroller.setNewPhoneImage}" update="model"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <hr/>
+                                        <h:outputText value="Просмотров: #{model.getShows().size()}" />
+                                        <h:outputText value="Осталось просмотров:" />
+                                        <h:inputText value="#{model.leftImpression}" />
+                                        <p:commandButton update="model" value="Сохранить" action="#{templatesCntroller.updateClient(model)}" />
+                                        <hr/>
+                                        <hr/>
+                                    </c:forEach>
+                                </p:panel>
+                            </c:forEach>
+                        </h:form>
+                    </c:if>
+                </div>
+            </div>
+            <div class="verticalspacer"></div>
+        </div>
+    </h:body>
+</html>
+

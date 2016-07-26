@@ -1,0 +1,210 @@
+.version.index /* version checker */
+{
+	color: #00001B;
+	background-color: #4318BC;
+}
+
+#page
+{
+	z-index: 1;
+	min-height: 0px;
+	background-image: none;
+	border-width: 0px;
+	border-color: #000000;
+	background-color: transparent;
+	padding-bottom: 631px;
+	width: 100%;
+	max-width: 1240px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#u1118
+{
+	height: 64px;
+	background-color: #B3CACA;
+	background-color: rgba(34,102,102,0.34);
+	position: relative;
+	left: -50%;
+	margin-left: 512px;
+	width: 100%;
+	max-width: 1024px;
+	-pie-background: rgba(34,102,102,0.34);
+}
+
+#u1118-wrapper
+{
+	position: fixed;
+	top: 0px;
+	z-index: 2;
+	left: 50%;
+	margin-left: -512px;
+	width: 82.59%;
+	max-width: 1024px;
+}
+
+#u1124
+{
+	height: 38px;
+	position: relative;
+	left: -50%;
+	margin-left: 232.5px;
+	width: 100%;
+	max-width: 465px;	
+}
+
+#u1124-wrapper
+{
+	position: fixed;
+	top: 544px;
+	z-index: 3;
+	left: 50%;
+	margin-left: -233px;
+	width: 37.5%;
+	max-width: 465px;
+}
+
+#u1298
+{
+	border-width: 0px;
+	border-color: transparent;
+	background-color: transparent;
+	padding-bottom: 480px;
+	position: relative;
+	left: -50%;
+	margin-left: 559px;
+	width: 100%;
+	max-width: 1118px;
+}
+
+#buttonu1248
+{
+	border-width: 0px;
+	background-color: transparent;
+	padding-bottom: 216px;
+	position: relative;
+	left: -50%;
+	margin-left: 23.5px;
+	width: 100%;
+	max-width: 47px;
+}
+
+#u1258
+{
+	z-index: 7;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 217px;
+	width: 100%;
+}
+
+#buttonu1248-wrapper
+{
+	position: fixed;
+	top: 64px;
+	z-index: 6;
+	left: 50%;
+	margin-left: -559px;
+	width: 3.8%;
+	max-width: 47px;
+}
+
+#u1121
+{
+	height: 480px;
+	position: relative;
+	left: -50%;
+	margin-left: 512px;
+	width: 100%;
+	max-width: 1024px;
+	
+}
+
+#u1121-wrapper
+{
+	position: fixed;
+	top: 64px;
+	z-index: 5;
+	left: 50%;
+	margin-left: -512px;
+	width: 82.59%;
+	max-width: 1024px;
+}
+
+#buttonu1268
+{
+	border-width: 0px;
+	background-color: transparent;
+	padding-bottom: 216px;
+	position: relative;
+	left: -50%;
+	margin-left: 23.5px;
+	width: 100%;
+	max-width: 47px;
+}
+
+#buttonu1248.ButtonSelected,#buttonu1268.ButtonSelected
+{
+	min-height: 0px;
+	width: 100%;
+	max-width: 47px;
+	margin: 0px 0px 0px 24px;
+}
+
+#u1288
+{
+	z-index: 10;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 217px;
+	width: 100%;
+}
+
+#buttonu1248.ButtonSelected #u1258,#buttonu1268.ButtonSelected #u1288
+{
+	min-height: 0px;
+	width: 100%;
+	margin: 217px -10000px 0px 0%;
+}
+
+#u1258_img,#u1288_img
+{
+	width: 100%;
+}
+
+#buttonu1268-wrapper
+{
+	position: fixed;
+	top: 64px;
+	z-index: 9;
+	left: 50%;
+	margin-left: 512px;
+	width: 3.8%;
+	max-width: 47px;
+}
+
+#u1298-wrapper
+{
+	position: fixed;
+	top: 64px;
+	z-index: 4;
+	left: 50%;
+	margin-left: -559px;
+	width: 90.17%;
+	max-width: 1118px;
+}
+
+#muse_css_mq,.html
+{
+	background-color: #FFFFFF;
+}
+
+body
+{
+	position: relative;
+	min-width: 320px;
+}
+
+
