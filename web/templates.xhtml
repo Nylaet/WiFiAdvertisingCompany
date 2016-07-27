@@ -82,13 +82,13 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{templatesCntroller.setNewFullImage}" update="model"/>
+                                                    <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{templatesCntroller.setNewFullImage}" update="@form"/>
                                                 </td>
                                                 <td>
-                                                    <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{templatesCntroller.setNewTabletImage}" update="model"/>
+                                                    <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{templatesCntroller.setNewTabletImage}" update="@form"/>
                                                 </td>
                                                 <td>
-                                                    <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{templatesCntroller.setNewPhoneImage}" update="model"/>
+                                                    <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{templatesCntroller.setNewPhoneImage}" update="@form"/>
                                                 </td>
                                             </tr>
                                         </table>
@@ -96,7 +96,7 @@
                                         <h:outputText value="Просмотров: #{model.getShows().size()}" />
                                         <h:outputText value="Осталось просмотров:" />
                                         <h:inputText value="#{model.leftImpression}" />
-                                        <p:commandButton update="model" value="Сохранить" action="#{templatesCntroller.updateClient(model)}" />
+                                        <p:commandButton update="@form" value="Сохранить" action="#{templatesCntroller.updateClient(model)}" />
                                         <hr/>
                                         <hr/>
                                     </c:forEach>

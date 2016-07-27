@@ -26,7 +26,7 @@ public class AccessPoint implements Serializable {
     private Long id;
     private String name="";
     private String address="";
-    private Long devID;
+    private String devID;
     private String clientsLast="";
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date lastUpdate;
@@ -50,11 +50,11 @@ public class AccessPoint implements Serializable {
         this.name = name;
     }
 
-    public Long getDevID() {
+    public String getDevID() {
         return devID;
     }
 
-    public void setDevID(Long devID) {
+    public void setDevID(String devID) {
         this.devID = devID;
     }
 

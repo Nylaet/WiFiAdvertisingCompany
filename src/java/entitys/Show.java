@@ -17,12 +17,12 @@ public class Show implements Serializable {
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateOfShow;
-    private Long apId;
+    private String apId;
 
     public Show() {
     }
 
-    public Show(Long apId) {
+    public Show(String apId) {
         this.apId = apId;
         this.dateOfShow=new Date();
     }
@@ -39,11 +39,11 @@ public class Show implements Serializable {
         return dateOfShow;
     }
 
-    public Long getApId() {
+    public String getApId() {
         return apId;
     }
 
-    public void setApId(Long apId) {
+    public void setApId(String apId) {
         this.apId = apId;
     }
     

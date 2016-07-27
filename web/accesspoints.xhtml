@@ -79,7 +79,7 @@
                                     <h:outputText value="Последние изменения:" />
                                     <h:outputText value="#{accessPointController.getFormatedDate(ap.lastUpdate)}" />
                                     <f:facet name="footer">
-                                        <p:commandButton value="Просмотреть/изменить макет баннера" actionListener="#{accessPointController.setSelected(ap)}" update="model" />
+                                        <p:commandButton value="Просмотреть/изменить макет баннера" actionListener="#{accessPointController.setSelected(ap)}" update="@form" />
                                     </f:facet>
                                 </p:panelGrid>
                             </p:carousel>
@@ -91,7 +91,7 @@
                                             <p>Рекомендуемый размер 1024х64</p>
                                         </td>
                                         <td>
-                                            <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{accessPointController.setAPFullImage}" update="model"/>                             
+                                            <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{accessPointController.setAPFullImage}" update="@form"/>                             
                                         </td>
                                     </tr>
                                     <tr>
@@ -100,7 +100,7 @@
                                             <p>Рекомендуемый размер 648х64</p>
                                         </td>
                                         <td>
-                                            <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{accessPointController.setAPTabletImage}" update="model"/>                             
+                                            <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{accessPointController.setAPTabletImage}" update="@form"/>                             
                                         </td>
                                     </tr>
                                     <tr>
@@ -109,7 +109,7 @@
                                             <p>Рекомендуемый размер 328х64</p>
                                         </td>
                                         <td>
-                                            <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{accessPointController.setAPPhoneImage}" update="model"/>                             
+                                            <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{accessPointController.setAPPhoneImage}" update="@form"/>                             
                                         </td>
                                     </tr>
                                 </table>

@@ -34,7 +34,7 @@ public class IndexController implements Serializable {
     private String apFullImage;
     private String apTabletImage;
     private String apPhoneImage;
-    private String speedRenew="15";
+    private String speedRenew = "15";
 
     public IndexController() {
     }
@@ -118,6 +118,7 @@ public class IndexController implements Serializable {
 
     public String getApFullImage() {
         if (getAP() != null) {
+            if(getAP().getApFullImage().length()>0)
             return getAP().getApFullImage();
         }
         return "emptyAPImage.jpg";
@@ -129,6 +130,7 @@ public class IndexController implements Serializable {
 
     public String getApTabletImage() {
         if (getAP() != null) {
+            if(getAP().getApTabletImage().length()>0)
             return getAP().getApTabletImage();
         }
         return getApFullImage();
@@ -140,6 +142,7 @@ public class IndexController implements Serializable {
 
     public String getApPhoneImage() {
         if (getAP() != null) {
+            if(getAP().getApPhoneImage().length()>0)
             return getAP().getApPhoneImage();
         }
         return getApTabletImage();
@@ -150,10 +153,14 @@ public class IndexController implements Serializable {
     }
 
     private AccessPoint getAP() {
-        Long devId = getAPID();
+        String devId = getAPID();
         AccessPoint ap = null;
         try {
-            ap = apf.find(devId);
+            for (AccessPoint accessPoint : apf.findAll()) {
+                if (accessPoint.getDevID().equals(devId)) {
+                    ap = accessPoint;
+                }
+            }
         } catch (IllegalArgumentException ex) {
         }
         if (ap != null) {
@@ -164,27 +171,27 @@ public class IndexController implements Serializable {
             apf.edit(ap);
             return ap;
         }
-        if(devId>0){
+        if (devId.length() > 0) {
+            ap = new AccessPoint();
             ap.setDevID(devId);
-            String clientsCount=FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("nClients");
-            ap.setClientsLast(clientsCount.length()> 0?clientsCount:"1");
+            ap.setName("Новая точка доступа");
+            String clientsCount = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("nClients");
+            ap.setClientsLast(clientsCount.length() > 0 ? clientsCount : "1");
             apf.create(ap);
         }
         return null;
     }
-    
-    
-    
+
     private void updateModel(Model model) {
         model.addShow(getAPID());
         mf.edit(model);
     }
 
-    private Long getAPID() {
-        Long id = Long.MIN_VALUE;
+    private String getAPID() {
+        String id = "";
         try {
             if (FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id").length() > 0) {
-                return Long.parseLong(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
+                return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
             }
         } catch (NullPointerException ex) {
         }

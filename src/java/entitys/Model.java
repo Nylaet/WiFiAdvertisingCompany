@@ -52,7 +52,7 @@ public class Model implements Serializable {
         return shows;
     }
 
-    public void addShow(Long apID) {
+    public void addShow(String apID) {
         leftImpression--;
         shows.add(new Show(apID));
     }
