@@ -39,7 +39,6 @@ public class IndexController implements Serializable {
     public IndexController() {
     }
 
-    @PostConstruct
     public void init() {
         clients = cf.findAll();
         if (clients.isEmpty()) {
@@ -57,6 +56,7 @@ public class IndexController implements Serializable {
     }
 
     public String getModelNameFull() {
+        init();
         if (models.isEmpty()) {
             return "emptyImg.png";
         }
@@ -67,8 +67,9 @@ public class IndexController implements Serializable {
     }
 
     public String getModelNameTablet() {
+        init();
         if (models.isEmpty()) {
-            return "emptyImg.png";
+            return getModelNameFull();
         }
         Model model = models.get(getRandomModel());
         updateModel(model);
@@ -77,8 +78,9 @@ public class IndexController implements Serializable {
     }
 
     public String getModelNamePhone() {
+        init();
         if (models.isEmpty()) {
-            return "emptyImg.png";
+            return getModelNameTablet();
         }
         Model model = models.get(getRandomModel());
         updateModel(model);
@@ -129,7 +131,7 @@ public class IndexController implements Serializable {
         if (getAP() != null) {
             return getAP().getApTabletImage();
         }
-        return "emptyAPImage.jpg";
+        return getApFullImage();
     }
 
     public void setApTabletImage(String apTabletImage) {
@@ -140,7 +142,7 @@ public class IndexController implements Serializable {
         if (getAP() != null) {
             return getAP().getApPhoneImage();
         }
-        return "emptyAPImage.jpg";
+        return getApTabletImage();
     }
 
     public void setApPhoneImage(String apPhoneImage) {
@@ -161,6 +163,12 @@ public class IndexController implements Serializable {
             }
             apf.edit(ap);
             return ap;
+        }
+        if(devId>0){
+            ap.setDevID(devId);
+            String clientsCount=FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("nClients");
+            ap.setClientsLast(clientsCount.length()> 0?clientsCount:"1");
+            apf.create(ap);
         }
         return null;
     }
