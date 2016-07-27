@@ -1,7 +1,7 @@
-.version.accespoints /* version checker */
+.version.accesspoints /* version checker */
 {
-	color: #000013;
-	background-color: #6F8AC1;
+	color: #000003;
+	background-color: #5B4F3F;
 }
 
 #page
@@ -21,7 +21,7 @@
 #pu817
 {
 	padding-bottom: 1378px;
-	margin-bottom: -652px;
+	margin-bottom: -653px;
 	margin-right: -10000px;
 	width: 100%;
 }
@@ -136,7 +136,7 @@
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 1px;
-	width: 60%;
+	width: 59.56%;
 	left: 31.12%;
 }
 
@@ -237,6 +237,15 @@
 	left: 27.12%;
 }
 
+#pbuttonu743
+{
+	padding-bottom: 118px;
+	margin-right: -10000px;
+	margin-top: 559px;
+	margin-left: 2px;
+	width: 18.31%;
+}
+
 #buttonu743
 {
 	z-index: 32;
@@ -248,14 +257,6 @@
 }
 
 #buttonu739.ButtonSelected,#buttonu743:hover
-{
-	min-height: 0px;
-	width: 18.15%;
-	max-width: 225px;
-	margin: 0px;
-}
-
-#buttonu743.ButtonSelected
 {
 	min-height: 0px;
 	width: 18.15%;
@@ -296,23 +297,92 @@
 	left: 31.56%;
 }
 
-#u838
+#buttonu1182
 {
 	z-index: 39;
-	height: 574px;
-	position: relative;
-	margin-right: -10000px;
-	margin-top: 90px;
-	width: 78.15%;
-	left: 20.33%;
+	position: fixed;
+	bottom: 66px;
+	left: 1px;
+	width: 18.15%;
+	max-width: 225px;
 }
 
-.ie #u838
+#buttonu743.ButtonSelected,#buttonu1182:hover
+{
+	min-height: 0px;
+	width: 18.15%;
+	max-width: 225px;
+	margin: 0px;
+}
+
+#buttonu1182.ButtonSelected
+{
+	min-height: 0px;
+	width: 18.15%;
+	max-width: 225px;
+	margin: 0px;
+}
+
+#u1208
+{
+	z-index: 40;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: -1px;
+	width: 23.12%;
+	left: 2.67%;
+}
+
+#buttonu1182:hover #u1208
+{
+	min-height: 0px;
+	width: 23.12%;
+	margin: -1px -10000px 0px 0%;
+}
+
+#buttonu1182.ButtonSelected #u1208
+{
+	min-height: 0px;
+	width: 23.12%;
+	margin: -1px -10000px 0px 0%;
+}
+
+#u1210-4
+{
+	z-index: 42;
+	position: relative;
+	margin-right: -10000px;
+	width: 58.67%;
+	left: 31.56%;
+}
+
+#u1233
+{
+	height: 506px;
+	position: relative;
+	left: -50%;
+	margin-left: 465px;
+	width: 100%;
+	max-width: 930px;
+}
+
+.ie #u1233
 {
 	background-color: #FFFFFF;
 	opacity: 0.01;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
 	filter: alpha(opacity=1);
+}
+
+#u1233-wrapper
+{
+	position: fixed;
+	top: 95px;
+	z-index: 46;
+	left: 50%;
+	margin-left: -348px;
+	width: 75%;
+	max-width: 930px;
 }
 
 #muse_css_mq,.html
@@ -326,7 +396,7 @@ body
 	min-width: 320px;
 }
 
-#u729_img,#u733_img,#u736_img,#u740_img,#u744_img
+#u729_img,#u733_img,#u736_img,#u740_img,#u744_img,#u1208_img
 {
 	width: 100%;
 }

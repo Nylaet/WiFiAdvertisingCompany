@@ -58,12 +58,11 @@ public class Client implements Serializable {
     }
 
     public String getUrlPersonal() {
+        urlPersonal="http://217.77.221.51/wpg/statistic.xhtml?userId="+String.valueOf(id);
         return urlPersonal;
     }
 
-    public void setUrlPersonal(String urlPersonal) {
-        this.urlPersonal = urlPersonal;
-    }
+    
 
     public List<Model> getModels() {
         return models;

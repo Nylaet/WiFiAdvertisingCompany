@@ -5,13 +5,14 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>WiFi Advertising Company</title>
+        <title>WiFi Promotion Group</title>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
         <h:outputStylesheet library="css" name="templates.css"/>
         <h:outputStylesheet library="css" name="site_global.css"/>
         <h:outputStylesheet library="css" name="master-b.css"/>
     </h:head>
     <h:body>
+        <p:growl autoUpdate="true" />
         <div class="clearfix borderbox" id="page"><!-- group -->
             <div class="clearfix grpelem" id="pu817"><!-- group -->
                 <div class="browser_width" id="u817-bw">
@@ -36,16 +37,16 @@
                     </div>
                     <img class="grpelem" id="u738-4" alt="Клиенты" src="resources/images/pageContent/u738-4.png" data-image-width="135"/><!-- rasterized frame -->
                 </a>
-                <a class="nonblock nontext Button transition clearfix" id="buttonu739" href="adminpage.xhtml?faces-redirect=true"><!-- container box -->
+                <a hidden="#{!loginController.admin}" class="nonblock nontext Button transition clearfix" id="buttonu739" href="adminpage.xhtml?faces-redirect=true"><!-- container box -->
                     <div class="clip_frame grpelem" id="u740"><!-- image -->
                         <img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
                     </div>
-                    <img hidden="#{!loginController.admin}" class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame -->
+                    <img  class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame -->
                 </a>
             </div>
             <div class="clearfix grpelem" id="pbuttonu743"><!-- group -->
                 <h:form>
-                    <h:commandLink value="#{loginController.logout}">
+                    <h:commandLink action="#{loginController.logout()}">
                         <div class="Button transition clearfix" id="buttonu743"><!-- container box -->
                             <div class="clip_frame grpelem" id="u744"><!-- image -->
                                 <img class="block" id="u744_img" src="resources/images/pageContent/login-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
@@ -106,7 +107,7 @@
                 </div>
             </div>
             <h:form>
-                <h:commandLink value="addTemplate.xhtml?faces-redirect=true" rendered="#{loginController.entered}">
+                <h:commandLink action="addtemplate.xhtml?faces-redirect=true" rendered="#{loginController.entered}">
                     <div class="Button transition shadow clearfix" id="buttonu1156"><!-- container box -->
                         <div class="clip_frame grpelem" id="u1169"><!-- image -->
                             <img class="block" id="u1169_img" src="resources/images/pageContent/add-gray.png" alt="" data-image-width="52" data-image-height="52"/>

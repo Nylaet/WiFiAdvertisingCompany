@@ -1,7 +1,7 @@
-.version.templates /* version checker */
+.version.adduser /* version checker */
 {
-	color: #00000F;
-	background-color: #DF7F62;
+	color: #00001C;
+	background-color: #708A7A;
 }
 
 #page
@@ -385,88 +385,6 @@
 	max-width: 930px;
 }
 
-#buttonu1156
-{
-	z-index: 47;
-	-webkit-transition-duration: 1s;
-	-webkit-transition-delay: 0s;
-	-webkit-transition-timing-function: ease;
-	transition-duration: 1s;
-	transition-delay: 0s;
-	transition-timing-function: ease;
-	-pie-box-shadow: 6px 6px 8px #7F7F7F;
-	box-shadow: 6px 6px 8px rgba(0,0,0,0.5);
-	border-style: solid;
-	border-width: 2px;
-	border-color: #003E17;
-	position: fixed;
-	bottom: 7px;
-	right: 5px;
-	width: 18.15%;
-	max-width: 225px;
-	background: #297B48 url("../resources/images/pageContent/light-green-background.png") no-repeat right bottom;
-}
-
-#buttonu1156:hover
-{
-	-pie-box-shadow: 6px 6px 8px #7F7F7F;
-	box-shadow: 6px 6px 8px rgba(0,0,0,0.5);
-	background-repeat: no-repeat;
-	background-position: left bottom;
-	min-height: 0px;
-	width: 18.15%;
-	max-width: 225px;
-	margin: 0px;
-}
-
-#buttonu1156.ButtonSelected
-{
-	-pie-box-shadow: 0px 0px 8px 2px #E5E5E5/* glow */,
-6px 6px 8px #7F7F7F/* drop shadow*/;
-	box-shadow: 0px 0px 8px rgba(204,204,204,0.5),0px 0px 8px rgba(204,204,204,0.5)/* glow */,
-6px 6px 8px rgba(0,0,0,0.5)/* drop shadow*/;
-	background-repeat: no-repeat;
-	background-position: left bottom;
-	min-height: 0px;
-	width: 18.15%;
-	max-width: 225px;
-	margin: 0px;
-}
-
-#u1169
-{
-	z-index: 48;
-	background-color: transparent;
-	position: relative;
-	margin-right: -10000px;
-	width: 23.12%;
-}
-
-#buttonu1156:hover #u1169
-{
-	min-height: 0px;
-	width: 23.12%;
-	margin: 0px -10000px 0px 0%;
-}
-
-#buttonu1156.ButtonSelected #u1169
-{
-	min-height: 0px;
-	width: 23.12%;
-	margin: 0px -10000px 0px 0%;
-}
-
-#u1171-4
-{
-	z-index: 50;
-	display: block;
-	vertical-align: top;
-	position: relative;
-	margin-right: -10000px;
-	width: 76%;
-	left: 24%;
-}
-
 #muse_css_mq,.html
 {
 	background-color: #FFFFFF;
@@ -478,7 +396,7 @@ body
 	min-width: 320px;
 }
 
-#u1169_img,#u729_img,#u733_img,#u736_img,#u740_img,#u744_img,#u1208_img
+#u729_img,#u733_img,#u736_img,#u740_img,#u744_img,#u1208_img
 {
 	width: 100%;
 }

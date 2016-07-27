@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>WiFi Promotion Group</title>
+    </h:head>
+    <h:body>
+        <c:forEach var="model" items="#{statisticPageController.models}">
+            <table>
+                <tr>
+                    <th rowspan="2">
+                        <h:graphicImage library="images" name="adverimages/full/#{model.nameFullSize}" style="max-width: 250px;" />
+                    </th>
+                    <th>
+                        <h:outputText value="Показов макета: #{model.shows.size()}" />
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <h:outputText value="Осталось показов макета: #{model.leftImpression}" />
+                    </td>
+                </tr>
+            </table>
+        </c:forEach>
+    </h:body>
+</html>
+

@@ -6,13 +6,14 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>WiFi Advertising Company</title>
+        <title>WiFi Promotion Group</title>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
         <h:outputStylesheet library="css" name="accesspoints.css"/>
         <h:outputStylesheet library="css" name="site_global.css"/>
         <h:outputStylesheet library="css" name="master-b.css"/>
     </h:head>
     <h:body>
+        <p:growl autoUpdate="true" />
         <div class="clearfix borderbox" id="page"><!-- group -->
             <div class="clearfix grpelem" id="pu817"><!-- group -->
                 <div class="browser_width" id="u817-bw">
@@ -41,16 +42,20 @@
                     <div class="clip_frame grpelem" id="u740"><!-- image -->
                         <img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
                     </div>
-                    <img class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame -->
+                    <img hidden="#{!loginController.admin}" class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame -->
                 </a>
             </div>
             <div class="clearfix grpelem" id="pbuttonu743"><!-- group -->
-                <div class="Button transition shadow clearfix" id="buttonu743"><!-- container box -->
-                    <div class="clip_frame grpelem" id="u744"><!-- image -->
-                        <img class="block" id="u744_img" src="resources/images/pageContent/login-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
-                    </div>
-                    <img class="grpelem" id="u746-4" alt="Выход" src="resources/images/pageContent/u746-4.png" data-image-width="134"/><!-- rasterized frame -->
-                </div>
+                <h:form>
+                    <h:commandLink action="#{loginController.logout()}">
+                        <div class="Button transition shadow clearfix" id="buttonu743"><!-- container box -->
+                            <div class="clip_frame grpelem" id="u744"><!-- image -->
+                                <img class="block" id="u744_img" src="resources/images/pageContent/login-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
+                            </div>
+                            <img class="grpelem" id="u746-4" alt="Выход" src="resources/images/pageContent/u746-4.png" data-image-width="134"/><!-- rasterized frame -->
+                        </div>
+                    </h:commandLink>
+                </h:form>
                 <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1182" href="profile.xhtml?faces-redirect=true"><!-- container box -->
                     <div class="clip_frame grpelem" id="u1208"><!-- image -->
                         <img class="block" id="u1208_img" src="resources/images/pageContent/profile.png" alt="" data-image-width="52" data-image-height="52"/>
@@ -61,7 +66,7 @@
                 <div id="u1233"><!-- JSF content -->
                     <c:if test="#{loginController.entered}">
                         <h:form>
-                            <p:carousel value="#{accessPointController.aps}" var="ap" headerText="Точки доступа" itemStyle="text-align:center" responsive="true" >
+                            <p:carousel numVisible="#{accessPointController.numVisible}" value="#{accessPointController.aps}" var="ap" headerText="Точки доступа" itemStyle="text-align:center" responsive="true" >
                                 <p:panelGrid columns="2">
                                     <f:facet name="header">
                                         <h:outputText value="#{ap.name}" />

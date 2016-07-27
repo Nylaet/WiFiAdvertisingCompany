@@ -8,7 +8,7 @@
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
         <h:outputStylesheet library="css" name="errorlogin.css"/>
         <h:outputStylesheet library="css" name="site_global.css"/>
-        <h:outputStylesheet library="css" name="master-a.css"/>
+
     </h:head>
     <h:body>
         <p:growl autoUpdate="true" /> 
@@ -21,39 +21,40 @@
                     <div class="rounded-corners" id="u1002"><!-- simple frame --></div>
                 </div>
                 <div id="u1003-4-wrapper">
-                    <img id="u1003-4" alt="Авторизация" src="images/u1003-4.png" data-image-width="233"/><!-- rasterized frame -->
+                    <img id="u1003-4" alt="Авторизация" src="resources/images/pageContent/u1003-4.png" data-image-width="233"/><!-- rasterized frame -->
                 </div>
                 <div id="u1004-4-wrapper">
-                    <img id="u1004-4" alt="Логин :" src="images/u1004-4.png" data-image-width="78"/><!-- rasterized frame -->
+                    <img id="u1004-4" alt="Логин :" src="resources/images/pageContent/u1004-4.png" data-image-width="78"/><!-- rasterized frame -->
                 </div>
                 <div id="u1005-wrapper">
-                    <div id="u1005"style="text-align: center;border: 1px solid rgb(77, 154, 106);"><!-- JSF content -->
+                    <div id="u1005" style="text-align: center;border: 1px solid rgb(77, 154, 106);" ><!-- JSF content -->
                         <h:inputText value="#{loginController.current.login}" style="text-align: center;" />
                     </div>
                     <div id="u1006-4-wrapper">
-                        <img id="u1006-4" alt="Пароль :" src="images/u1006-4.png" data-image-width="78"/><!-- rasterized frame -->
+                        <img id="u1006-4" alt="Пароль :" src="resources/images/pageContent/u1006-4.png" data-image-width="78"/><!-- rasterized frame -->
                     </div>
                     <div id="u1007-wrapper">
-                        <div id="u1007" style="text-align: center;border: 1px solid rgb(77, 154, 106);"><!-- JSF content -->
+                        <div id="u1007" style="text-align: center;border: 1px solid rgb(77, 154, 106);" ><!-- JSF content -->
                             <h:inputSecret value="#{loginController.current.password}" style="text-align: center" />
                         </div>
-                        <div id="buttonu1008-wrapper">
-                            <h:commandLink action="#{loginController.login()}">
+                        <div id="buttonu1008-wrapper" >
+                            <h:commandLink action="#{loginController.login()}" >
                                 <div class="Button transition rounded-corners clearfix" id="buttonu1008"><!-- container box -->
                                     <div class="clip_frame colelem" id="u1009"><!-- image -->
-                                        <img class="block" id="u1009_img" src="images/user-gray.png" alt="" data-image-width="52" data-image-height="52"/>
+                                        <img class="block" id="u1009_img" src="resources/images/pageContent/user-gray.png" alt="" data-image-width="52" data-image-height="52"/>
                                     </div>
-                                    <img class="colelem" id="u1011-4" alt="Log in" src="images/u1011-4.png" data-image-width="52"/><!-- rasterized frame -->
+                                    <img class="colelem" id="u1011-4" alt="Log in" src="resources/images/pageContent/u1011-4.png" data-image-width="52"/><!-- rasterized frame -->
                                 </div>
                             </h:commandLink>
                         </div>
                         <div id="u1035-4-wrapper">
-                            <img id="u1035-4" alt="Ошибка авторизации!" src="images/u1035-4.png" data-image-width="232"/><!-- rasterized frame -->
+                            <img id="u1035-4" alt="Ошибка авторизации!" src="resources/images/pageContent/u1035-4.png" data-image-width="232"/><!-- rasterized frame -->
                         </div>
 
                         <div class="verticalspacer"></div>
 
                     </div>
+                </div>
             </h:form>
         </div>
     </h:body>

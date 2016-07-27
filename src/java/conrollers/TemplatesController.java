@@ -18,6 +18,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import org.apache.commons.io.FileUtils;
 import org.primefaces.event.FileUploadEvent;
@@ -31,7 +32,8 @@ public class TemplatesController implements Serializable {
     ClientFacade cf;
     @EJB
     ModelFacade mf;
-    
+    @Inject
+    LoginController lc;
     private List <Client> clients;
     private Client selected;
     private String nameFullSize;
@@ -61,6 +63,7 @@ public class TemplatesController implements Serializable {
                 model.setNamePhoneSize(namePhoneSize);
             }
             mf.edit(model);
+            lc.getCurrent().addLog(model.getId() +" model modified");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Успешно сохранено"));
         }
     }

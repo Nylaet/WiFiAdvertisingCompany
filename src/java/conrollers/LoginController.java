@@ -23,6 +23,7 @@ public class LoginController implements Serializable {
     private User created = new User();
     private boolean entered;
     private boolean admin;
+    private List<User> users;
 
     @PostConstruct
     private void init() {
@@ -72,13 +73,16 @@ public class LoginController implements Serializable {
         return "login.xhtml?faces-redirect=true";
     }
 
-    public void createNewUser() {
+    public String createNewUser() {
         if (created.getLogin().length() > 3 && created.getPassword().length() > 8) {
             created.setRole(Role.MANAGER);
             created.addLog("created");
             uf.create(created);
+            current.addLog(created.getLogin()+"created");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Пользователь создан"));
+            return "";
         }
+        return "";
     }
 
     public void deleteUser(User user) {
@@ -118,4 +122,13 @@ public class LoginController implements Serializable {
         this.admin = admin;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+    
+    
 }

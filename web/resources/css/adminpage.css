@@ -1,13 +1,13 @@
 .version.adminpage /* version checker */
 {
-	color: #000000;
-	background-color: #4741D8;
+	color: #0000EC;
+	background-color: #5D20EB;
 }
 
 #page
 {
 	z-index: 1;
-	min-height: 500px;
+	min-height: 680px;
 	background-image: none;
 	border-width: 0px;
 	border-color: #000000;
@@ -21,7 +21,7 @@
 #pu817
 {
 	padding-bottom: 1378px;
-	margin-bottom: -878px;
+	margin-bottom: -698px;
 	margin-right: -10000px;
 	width: 100%;
 }
@@ -136,7 +136,7 @@
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 1px;
-	width: 60%;
+	width: 59.56%;
 	left: 31.12%;
 }
 
@@ -237,6 +237,15 @@
 	left: 27.12%;
 }
 
+#pbuttonu743
+{
+	padding-bottom: 118px;
+	margin-right: -10000px;
+	margin-top: 559px;
+	margin-left: 2px;
+	width: 18.31%;
+}
+
 #buttonu743
 {
 	z-index: 32;
@@ -248,14 +257,6 @@
 }
 
 #buttonu739.ButtonSelected,#buttonu743:hover
-{
-	min-height: 0px;
-	width: 18.15%;
-	max-width: 225px;
-	margin: 0px;
-}
-
-#buttonu743.ButtonSelected
 {
 	min-height: 0px;
 	width: 18.15%;
@@ -296,6 +297,153 @@
 	left: 31.56%;
 }
 
+#buttonu1182
+{
+	z-index: 39;
+	position: fixed;
+	bottom: 66px;
+	left: 1px;
+	width: 18.15%;
+	max-width: 225px;
+}
+
+#buttonu743.ButtonSelected,#buttonu1182:hover
+{
+	min-height: 0px;
+	width: 18.15%;
+	max-width: 225px;
+	margin: 0px;
+}
+
+#buttonu1182.ButtonSelected
+{
+	min-height: 0px;
+	width: 18.15%;
+	max-width: 225px;
+	margin: 0px;
+}
+
+#u1208
+{
+	z-index: 40;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: -1px;
+	width: 23.12%;
+	left: 2.67%;
+}
+
+#buttonu1182:hover #u1208
+{
+	min-height: 0px;
+	width: 23.12%;
+	margin: -1px -10000px 0px 0%;
+}
+
+#buttonu1182.ButtonSelected #u1208
+{
+	min-height: 0px;
+	width: 23.12%;
+	margin: -1px -10000px 0px 0%;
+}
+
+#u1210-4
+{
+	z-index: 42;
+	position: relative;
+	margin-right: -10000px;
+	width: 58.67%;
+	left: 31.56%;
+}
+
+#u1233
+{
+	height: 506px;
+	position: relative;
+	left: -50%;
+	margin-left: 465px;
+	width: 100%;
+	max-width: 930px;
+}
+
+.ie #u1233
+{
+	background-color: #FFFFFF;
+	opacity: 0.01;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
+	filter: alpha(opacity=1);
+}
+
+#u1233-wrapper
+{
+	position: fixed;
+	top: 95px;
+	z-index: 46;
+	left: 50%;
+	margin-left: -348px;
+	width: 75%;
+	max-width: 930px;
+}
+
+#buttonu1285
+{
+	z-index: 47;
+	-webkit-transition-duration: 1s;
+	-webkit-transition-delay: 0s;
+	-webkit-transition-timing-function: ease;
+	transition-duration: 1s;
+	transition-delay: 0s;
+	transition-timing-function: ease;
+	-pie-box-shadow: 6px 6px 8px #7F7F7F;
+	box-shadow: 6px 6px 8px rgba(0,0,0,0.5);
+	border-style: solid;
+	border-width: 2px;
+	border-color: #003E17;
+	padding-bottom: 2px;
+	position: fixed;
+	bottom: 5px;
+	right: 4px;
+	width: 24.44%;
+	max-width: 303px;
+	background: #297B48 url("../resources/images/pageContent/light-green-background.png") no-repeat right bottom;
+}
+
+#buttonu1285.ButtonSelected
+{
+	background-image: none;
+	min-height: 0px;
+	width: 24.44%;
+	max-width: 303px;
+	margin: 0px;
+}
+
+#u1287
+{
+	z-index: 48;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	width: 17.17%;
+}
+
+#buttonu1285.ButtonSelected #u1287
+{
+	min-height: 0px;
+	width: 17.17%;
+	margin: 0px -10000px 0px 0%;
+}
+
+#u1286-4
+{
+	z-index: 50;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	width: 71.62%;
+	left: 17.83%;
+}
+
 #muse_css_mq,.html
 {
 	background-color: #FFFFFF;
@@ -307,7 +455,7 @@ body
 	min-width: 320px;
 }
 
-#u729_img,#u733_img,#u736_img,#u740_img,#u744_img
+#u1287_img,#u729_img,#u733_img,#u736_img,#u740_img,#u744_img,#u1208_img
 {
 	width: 100%;
 }

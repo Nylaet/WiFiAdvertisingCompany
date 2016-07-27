@@ -12,6 +12,7 @@
         <h:outputStylesheet library="css" name="master-b.css"/>
     </h:head>
     <h:body>
+        <p:growl autoUpdate="true" />
         <div class="clearfix borderbox" id="page"><!-- group -->
             <div class="clearfix grpelem" id="pu817"><!-- group -->
                 <div class="browser_width" id="u817-bw">
@@ -35,7 +36,7 @@
             <div id="u1233-wrapper">
                 <div id="u1233"><!-- JSF content -->
                     <h:form rendered="#{loginController.entered}">
-                        <p:scrollPanel style="width: 100%;height: 100%">
+                        <p:scrollPanel style="width: 100%;height: 500px;">
                             <c:forEach items="#{clientsController.clients}" var="client">
                                 <p:panel toggleable="true" collapsed="true" header="#{client.name}" >
                                     <h:panelGrid columns="2">

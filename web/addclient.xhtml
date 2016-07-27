@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>WiFi Promotion Group</title>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+        <h:outputStylesheet library="css" name="addclient.css"/>
+        <h:outputStylesheet library="css" name="site_global.css"/>
+        <h:outputStylesheet library="css" name="master-b.css"/>
+    </h:head>
+    <h:body>
+        <p:growl autoUpdate="true" />
+        <div class="clearfix borderbox" id="page"><!-- group -->
+            <div class="clearfix grpelem" id="pu817"><!-- group -->
+                <div class="browser_width" id="u817-bw">
+                    <div id="u817"><!-- simple frame --></div>
+                </div>
+                <div id="u726"><!-- simple frame --></div>
+                <a class="nonblock nontext Button transition clearfix" id="buttonu727" href="accesspoints.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u729"><!-- image --><img class="block" id="u729_img" src="resources/images/pageContent/wifi-segoi3-gray.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u728-4" alt="Точки доступа" src="resources/images/pageContent/u728-4.png" data-image-width="134"/><!-- rasterized frame --></a>
+                <a class="nonblock nontext Button transition clearfix" id="buttonu731" href="templates.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u733"><!-- image --><img class="block" id="u733_img" src="resources/images/pageContent/templates-gray.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u732-4" alt="Макеты" src="resources/images/pageContent/u732-4.png" data-image-width="134"/><!-- rasterized frame --></a>
+                <a class="nonblock nontext Button transition clearfix" id="buttonu735" href="clients.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u736"><!-- image --><img class="block" id="u736_img" src="resources/images/pageContent/happy_users.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u738-4" alt="Клиенты" src="resources/images/pageContent/u738-4.png" data-image-width="135"/><!-- rasterized frame --></a>
+                <a hidden="#{loginController.admin}" class="nonblock nontext Button transition clearfix" id="buttonu739" href="adminpage.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u740"><!-- image --><img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame --></a>
+            </div>
+            <div class="clearfix grpelem" id="pbuttonu743"><!-- group -->
+                <h:form>
+                    <h:commandLink action="#{loginController.logout()}" >
+                        <div class="Button transition clearfix" id="buttonu743"><!-- container box -->
+                            <div class="clip_frame grpelem" id="u744"><!-- image -->
+                                <img class="block" id="u744_img" src="resources/images/pageContent/login-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
+                            </div>
+                            <img class="grpelem" id="u746-4" alt="Выход" src="resources/images/pageContent/u746-4.png" data-image-width="134"/><!-- rasterized frame -->
+                        </div>
+                    </h:commandLink>
+                </h:form>
+                <a class="nonblock nontext Button transition clearfix" id="buttonu1182" href="profile.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u1208"><!-- image --><img class="block" id="u1208_img" src="resources/images/pageContent/profile.png" alt="" data-image-width="52" data-image-height="52"/></div><img class="grpelem" id="u1210-4" alt="Профиль" src="resources/images/pageContent/u1210-4.png" data-image-width="132"/><!-- rasterized frame --></a>
+            </div>
+            <div id="u1233-wrapper">
+                <div id="u1233"><!-- JSF content -->
+                    <h:form rendered="#{loginController.entered}">
+                        <h:panelGrid columns="2">
+                            <f:facet name="header">
+                                <h:outputText value="Новый клиент"/>
+                            </f:facet>
+                            <h:outputText value="Имя:" />
+                            <h:inputText value="#{clientsController.created.name}" />
+                            <h:outputText value="Телефон:" />
+                            <h:inputText value="#{clientsController.created.phone}" />
+                            <h:outputText value="e-mail:" />
+                            <h:inputText value="#{clientsController.created.email}" />                            
+                        </h:panelGrid>
+                        <h:commandButton value="Создать" action="#{clientsController.createClient()}" />
+                    </h:form>
+                </div>
+            </div>
+            <div class="verticalspacer"></div>
+        </div>
+    </h:body>
+</html>
+
