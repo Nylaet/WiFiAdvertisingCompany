@@ -13,14 +13,14 @@ import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author Panker-RDP
  */
 @Named(value = "sysLog")
-@ApplicationScoped
+@RequestScoped
 public class SysLog {
     
     @EJB
