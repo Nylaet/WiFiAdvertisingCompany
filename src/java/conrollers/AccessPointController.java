@@ -27,117 +27,125 @@ import org.primefaces.model.UploadedFile;
 @Named(value = "accessPointController")
 @SessionScoped
 public class AccessPointController implements Serializable {
-    
+
     @EJB
     AccessPointFacade apf;
     @Inject
     LoginController lc;
     @Inject
     SysLog syslog;
-    
+
     private AccessPoint select;
-    private List <AccessPoint> aps;
+    private List<AccessPoint> aps;
     private String selectedAPFullImage;
     private String selectedAPTabletImage;
     private String selectedAPPhoneImage;
     private String numVisible;
-    private boolean selected=false;
-    
+    private boolean selected = false;
+
     @PostConstruct
-    public void init(){
-        aps=new ArrayList<>();
-        if(apf.findAll()!=null){
-            aps=apf.findAll();
-        
+    public void init() {
+        aps = new ArrayList<>();
+        if (apf.findAll() != null) {
+            aps = apf.findAll();
+
         }
     }
+
     public AccessPointController() {
     }
-    
+
     public void setAPFullImage(FileUploadEvent event) {
-        String relative="/resources/images/apImage/full/";
-        ServletContext context=(ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
-        String absolute=context.getRealPath(relative);
-        
-        UploadedFile uploadedFile=(UploadedFile)event.getFile();
-        Path path=Paths.get(absolute);
-        InputStream is=null;
+        String relative = "/resources/images/apImage/full/";
+        ServletContext context = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+        String absolute = context.getRealPath(relative);
+
+        UploadedFile uploadedFile = (UploadedFile) event.getFile();
+        Path path = Paths.get(absolute);
+        InputStream is = null;
         try {
-            is=uploadedFile.getInputstream();
+            is = uploadedFile.getInputstream();
         } catch (IOException ex) {
             syslog.addSysLog("проблема с открытием потока");
         }
-        
-        File file=new File(path.toString()+"/"+uploadedFile.getFileName());
-        
+
+        File file = new File(path.toString() + "/" + uploadedFile.getFileName());
+
         try {
-            FileUtils.copyInputStreamToFile(is, file); 
-            selectedAPFullImage=uploadedFile.getFileName();
+            FileUtils.copyInputStreamToFile(is, file);
+            selectedAPFullImage = uploadedFile.getFileName();
         } catch (IOException ex) {
             syslog.addSysLog("проблема с записью файла на диск");
         }
     }
 
     public void setAPTabletImage(FileUploadEvent event) {
-        String relative="/resources/images/apImage/tablet/";
-        ServletContext context=(ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
-        String absolute=context.getRealPath(relative);
-        
-        UploadedFile uploadedFile=(UploadedFile)event.getFile();
-        Path path=Paths.get(absolute);
-        InputStream is=null;
+        String relative = "/resources/images/apImage/tablet/";
+        ServletContext context = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+        String absolute = context.getRealPath(relative);
+
+        UploadedFile uploadedFile = (UploadedFile) event.getFile();
+        Path path = Paths.get(absolute);
+        InputStream is = null;
         try {
-            is=uploadedFile.getInputstream();
+            is = uploadedFile.getInputstream();
         } catch (IOException ex) {
             syslog.addSysLog("проблема с открытием потока");
         }
-        
-        File file=new File(path.toString()+"/"+uploadedFile.getFileName());
-        
+
+        File file = new File(path.toString() + "/" + uploadedFile.getFileName());
+
         try {
-            FileUtils.copyInputStreamToFile(is, file); 
-            selectedAPTabletImage=uploadedFile.getFileName();
+            FileUtils.copyInputStreamToFile(is, file);
+            selectedAPTabletImage = uploadedFile.getFileName();
         } catch (IOException ex) {
             syslog.addSysLog("проблема с записью файла на диск");
         }
     }
-    
+
     public void setAPPhoneImage(FileUploadEvent event) {
-        String relative="/resources/images/apImage/phone/";
-        ServletContext context=(ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
-        String absolute=context.getRealPath(relative);
-        
-        UploadedFile uploadedFile=(UploadedFile)event.getFile();
-        Path path=Paths.get(absolute);
-        InputStream is=null;
+        String relative = "/resources/images/apImage/phone/";
+        ServletContext context = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+        String absolute = context.getRealPath(relative);
+
+        UploadedFile uploadedFile = (UploadedFile) event.getFile();
+        Path path = Paths.get(absolute);
+        InputStream is = null;
         try {
-            is=uploadedFile.getInputstream();
+            is = uploadedFile.getInputstream();
         } catch (IOException ex) {
             syslog.addSysLog("проблема с открытием потока");
         }
-        
-        File file=new File(path.toString()+"/"+uploadedFile.getFileName());
-        
+
+        File file = new File(path.toString() + "/" + uploadedFile.getFileName());
+
         try {
-            FileUtils.copyInputStreamToFile(is, file); 
-            selectedAPPhoneImage=uploadedFile.getFileName();
+            FileUtils.copyInputStreamToFile(is, file);
+            selectedAPPhoneImage = uploadedFile.getFileName();
         } catch (IOException ex) {
             syslog.addSysLog("проблема с записью файла на диск");
         }
     }
-    public void updateSelected(){
-        if(apf.find(select.getId())!=null){
-            if(selectedAPFullImage.length()>0)select.setApFullImage(selectedAPFullImage);
-            if(selectedAPTabletImage.length()>0)select.setApTabletImage(selectedAPTabletImage);
-            if(selectedAPPhoneImage.length()>0)select.setApPhoneImage(selectedAPPhoneImage);
+
+    public void updateSelected() {
+        if (apf.find(select.getId()) != null) {
+            if (selectedAPFullImage.length() > 0) {
+                select.setApFullImage(selectedAPFullImage);
+            }
+            if (selectedAPTabletImage.length() > 0) {
+                select.setApTabletImage(selectedAPTabletImage);
+            }
+            if (selectedAPPhoneImage.length() > 0) {
+                select.setApPhoneImage(selectedAPPhoneImage);
+            }
             apf.edit(select);
-            lc.getCurrent().addLog(select.getId()+" ap modified");
+            lc.getCurrent().addLog(select.getId() + " ap modified");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Точка доступа обновлена"));
             return;
         }
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Что-то пошло не так"));
     }
-    
+
     public List<AccessPoint> getAps() {
         return aps;
     }
@@ -147,22 +155,28 @@ public class AccessPointController implements Serializable {
     }
 
     public AccessPoint getSelect() {
-        if(select==null)select=new AccessPoint();
+        if (select == null) {
+            select = new AccessPoint();
+        }
         return select;
     }
 
     public void setSelect(AccessPoint select) {
         this.select = select;
     }
-    
-    public String getFormatedDate(Date date){
-        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM hh:mm");
-        return(date!=null?sdf.format(date):"Не известно"); 
+
+    public String getFormatedDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM hh:mm");
+        return (date != null ? sdf.format(date) : "Не известно");
     }
 
     public String getNumVisible() {
-        if(aps.size()>5)return "5";
-        if(aps.isEmpty())return "3";
+        if (aps.size() > 5) {
+            return "5";
+        }
+        if (aps.isEmpty()) {
+            return "3";
+        }
         return String.valueOf(aps.size());
     }
 
@@ -171,13 +185,17 @@ public class AccessPointController implements Serializable {
     }
 
     public boolean isSelected() {
-        if(getSelect().getId()>0)return true;
+        try {
+            if (getSelect().getId() > 0) {
+                return true;
+            }
+        } catch (NullPointerException npe) {
+        }
         return false;
     }
 
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
-    
-    
+
 }
