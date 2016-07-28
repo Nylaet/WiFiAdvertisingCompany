@@ -40,7 +40,7 @@
             <div id="u1233-wrapper">
                 <div id="u1233"><!-- JSF content -->
                     <h:form rendered="#{loginController.entered}">
-                        <h:panelGrid columns="2">
+                        <p:panelGrid columns="2">
                             <f:facet name="header">
                                 <h:outputText value="Новый клиент"/>
                             </f:facet>
@@ -49,9 +49,12 @@
                             <h:outputText value="Телефон:" />
                             <h:inputText value="#{clientsController.created.phone}" />
                             <h:outputText value="e-mail:" />
-                            <h:inputText value="#{clientsController.created.email}" />                            
-                        </h:panelGrid>
-                        <h:commandButton value="Создать" action="#{clientsController.createClient()}" />
+                            <h:inputText value="#{clientsController.created.email}" /> 
+                            <f:facet name="footer">
+                                <h:commandButton value="Создать" 
+                                                 action="#{clientsController.createClient()}" />
+                            </f:facet>
+                        </p:panelGrid>                        
                     </h:form>
                 </div>
             </div>

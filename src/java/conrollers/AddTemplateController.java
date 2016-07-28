@@ -31,38 +31,42 @@ public class AddTemplateController implements Serializable {
     ClientFacade cf;
     @EJB
     ModelFacade mf;
-    
+
     @Inject
     private LoginController lc;
-    
+    @Inject
+    SysLog syslog;
+
     Model createdModel;
     Client selectedClient;
-    
+
     private String nameFullSize;
     private String nameTabletSize;
     private String namePhoneSize;
-            
+
     public AddTemplateController() {
     }
-    
-    public String addModel(){
-        if(selectedClient!=null){
-            if(nameFullSize.length()>0&&createdModel.getLeftImpression()>0){
+
+    public String addModel() {
+        if (selectedClient != null) {
+            if (nameFullSize.length() > 0 && createdModel.getLeftImpression() > 0) {
                 createdModel.setNameFullSize(nameFullSize);
                 createdModel.setNameTabletSize(nameTabletSize);
                 createdModel.setNamePhoneSize(namePhoneSize);
                 cf.find(selectedClient.getId()).addModel(createdModel);
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Сохранено"));
-                lc.getCurrent().addLog(createdModel.getId()+" model added");
+                lc.getCurrent().addLog(createdModel.getId() + " model added");
                 return "templates.xhtml?faces-redirect=true";
             }
         }
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fail :'('"));
         return "";
     }
-    
+
     public Model getCreatedModel() {
-        if(createdModel==null)createdModel=new Model();
+        if (createdModel == null) {
+            createdModel = new Model();
+        }
         return createdModel;
     }
 
@@ -71,17 +75,21 @@ public class AddTemplateController implements Serializable {
     }
 
     public Client getSelectedClient() {
-        if(selectedClient==null)selectedClient=new Client();
+        if (selectedClient == null) {
+            selectedClient = new Client();
+        }
         return selectedClient;
     }
 
     public void setSelectedClient(Client selectedClient) {
         this.selectedClient = selectedClient;
     }
-    
-    public List <Client> getClients(){
-        List<Client> clients=cf.findAll();        
-        if(clients==null)return new ArrayList<>();
+
+    public List<Client> getClients() {
+        List<Client> clients = cf.findAll();
+        if (clients == null) {
+            return new ArrayList<>();
+        }
         return clients;
     }
 
@@ -108,80 +116,77 @@ public class AddTemplateController implements Serializable {
     public void setNamePhoneSize(String namePhoneSize) {
         this.namePhoneSize = namePhoneSize;
     }
-    
-    public void setNewFullImage(FileUploadEvent event){
-        String relative="/resources/images/advertImage/full/";
-        ServletContext context=(ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
-        String absolute=context.getRealPath(relative);
-        
-        UploadedFile uploadedFile=(UploadedFile)event.getFile();
-        Path path=Paths.get(absolute);
-        InputStream is=null;
+
+    public void setNewFullImage(FileUploadEvent event) {
+        String relative = "/resources/images/advertImage/full/";
+        ServletContext context = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+        String absolute = context.getRealPath(relative);
+
+        UploadedFile uploadedFile = (UploadedFile) event.getFile();
+        Path path = Paths.get(absolute);
+        InputStream is = null;
         try {
-            is=uploadedFile.getInputstream();
+            is = uploadedFile.getInputstream();
         } catch (IOException ex) {
-            System.out.println("проблема с открытием потока");
+            syslog.addSysLog("проблема с открытием потока");
         }
-        
-        File file=new File(path.toString()+"/"+uploadedFile.getFileName());
-        
+
+        File file = new File(path.toString() + "/" + uploadedFile.getFileName());
+
         try {
-            FileUtils.copyInputStreamToFile(is, file); 
-            nameFullSize=uploadedFile.getFileName();
+            FileUtils.copyInputStreamToFile(is, file);
+            nameFullSize = uploadedFile.getFileName();
         } catch (IOException ex) {
-            System.out.println("проблема с записью файла на диск");
-        }
-    }
-    
-    public void setNewTabletImage(FileUploadEvent event){
-        String relative="/resources/images/advertImage/tablet/";
-        ServletContext context=(ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
-        String absolute=context.getRealPath(relative);
-        
-        UploadedFile uploadedFile=(UploadedFile)event.getFile();
-        Path path=Paths.get(absolute);
-        InputStream is=null;
-        try {
-            is=uploadedFile.getInputstream();
-        } catch (IOException ex) {
-            System.out.println("проблема с открытием потока");
-        }
-        
-        File file=new File(path.toString()+"/"+uploadedFile.getFileName());
-        
-        try {
-            FileUtils.copyInputStreamToFile(is, file); 
-            nameTabletSize=uploadedFile.getFileName();
-        } catch (IOException ex) {
-            System.out.println("проблема с записью файла на диск");
+            syslog.addSysLog("проблема с записью файла на диск");
         }
     }
-    
-    public void setNewPhoneImage(FileUploadEvent event){
-        String relative="/resources/images/advertImage/phone/";
-        ServletContext context=(ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
-        String absolute=context.getRealPath(relative);
-        
-        UploadedFile uploadedFile=(UploadedFile)event.getFile();
-        Path path=Paths.get(absolute);
-        InputStream is=null;
+
+    public void setNewTabletImage(FileUploadEvent event) {
+        String relative = "/resources/images/advertImage/tablet/";
+        ServletContext context = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+        String absolute = context.getRealPath(relative);
+
+        UploadedFile uploadedFile = (UploadedFile) event.getFile();
+        Path path = Paths.get(absolute);
+        InputStream is = null;
         try {
-            is=uploadedFile.getInputstream();
+            is = uploadedFile.getInputstream();
         } catch (IOException ex) {
-            System.out.println("проблема с открытием потока");
+            syslog.addSysLog("проблема с открытием потока");
         }
-        
-        File file=new File(path.toString()+"/"+uploadedFile.getFileName());
-        
+
+        File file = new File(path.toString() + "/" + uploadedFile.getFileName());
+
         try {
-            FileUtils.copyInputStreamToFile(is, file); 
-            namePhoneSize=uploadedFile.getFileName();
+            FileUtils.copyInputStreamToFile(is, file);
+            nameTabletSize = uploadedFile.getFileName();
         } catch (IOException ex) {
-            System.out.println("проблема с записью файла на диск");
+            syslog.addSysLog("проблема с записью файла на диск");
         }
     }
-        
-    
-    
-    
+
+    public void setNewPhoneImage(FileUploadEvent event) {
+        String relative = "/resources/images/advertImage/phone/";
+        ServletContext context = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+        String absolute = context.getRealPath(relative);
+
+        UploadedFile uploadedFile = (UploadedFile) event.getFile();
+        Path path = Paths.get(absolute);
+        InputStream is = null;
+        try {
+            is = uploadedFile.getInputstream();
+        } catch (IOException ex) {
+            syslog.addSysLog("проблема с открытием потока");
+        }
+
+        File file = new File(path.toString() + "/" + uploadedFile.getFileName());
+
+        try {
+            FileUtils.copyInputStreamToFile(is, file);
+            namePhoneSize = uploadedFile.getFileName();
+        } catch (IOException ex) {
+            syslog.addSysLog("проблема с записью файла на диск");
+        }
+    }
+
 }

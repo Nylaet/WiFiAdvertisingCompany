@@ -11,10 +11,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 @Named(value = "indexController")
 @ApplicationScoped
@@ -26,6 +26,8 @@ public class IndexController implements Serializable {
     ModelFacade mf;
     @EJB
     AccessPointFacade apf;
+    @Inject
+    SysLog sysLog;
     private List<Client> clients;
     private List<Model> models = new ArrayList<>();
     private String modelNameFull;
@@ -53,6 +55,7 @@ public class IndexController implements Serializable {
                 }
             }
         }
+        sysLog.addSysLog("Application Started");
     }
 
     public String getModelNameFull() {
@@ -118,7 +121,7 @@ public class IndexController implements Serializable {
 
     public String getApFullImage() {
         if (getAP() != null) {
-            if(getAP().getApFullImage().length()>0)
+            if(getAP().getApFullImage()!=null)
             return getAP().getApFullImage();
         }
         return "emptyAPImage.jpg";
@@ -130,7 +133,7 @@ public class IndexController implements Serializable {
 
     public String getApTabletImage() {
         if (getAP() != null) {
-            if(getAP().getApTabletImage().length()>0)
+            if(getAP().getApTabletImage()!=null)
             return getAP().getApTabletImage();
         }
         return getApFullImage();
@@ -142,7 +145,7 @@ public class IndexController implements Serializable {
 
     public String getApPhoneImage() {
         if (getAP() != null) {
-            if(getAP().getApPhoneImage().length()>0)
+            if(getAP().getApPhoneImage()!=null)
             return getAP().getApPhoneImage();
         }
         return getApTabletImage();
@@ -162,6 +165,7 @@ public class IndexController implements Serializable {
                 }
             }
         } catch (IllegalArgumentException ex) {
+            sysLog.addSysLog("IndexController.getAP()"+ex);
         }
         if (ap != null) {
             if (FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("nClients").length() > 0) {
@@ -194,6 +198,7 @@ public class IndexController implements Serializable {
                 return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
             }
         } catch (NullPointerException ex) {
+            sysLog.addSysLog("IndexController.getAPID()"+ex);
         }
         return id;
     }

@@ -34,6 +34,8 @@ public class TemplatesController implements Serializable {
     ModelFacade mf;
     @Inject
     LoginController lc;
+    @Inject
+    SysLog syslog;
     private List <Client> clients;
     private Client selected;
     private String nameFullSize;
@@ -79,7 +81,7 @@ public class TemplatesController implements Serializable {
         try {
             is=uploadedFile.getInputstream();
         } catch (IOException ex) {
-            System.out.println("проблема с открытием потока");
+            syslog.addSysLog("проблема с открытием потока");
         }
         
         File file=new File(path.toString()+"/"+uploadedFile.getFileName());
@@ -88,7 +90,7 @@ public class TemplatesController implements Serializable {
             FileUtils.copyInputStreamToFile(is, file); 
             nameFullSize=uploadedFile.getFileName();
         } catch (IOException ex) {
-            System.out.println("проблема с записью файла на диск");
+            syslog.addSysLog("проблема с записью файла на диск");
         }
     }
     
@@ -103,7 +105,7 @@ public class TemplatesController implements Serializable {
         try {
             is=uploadedFile.getInputstream();
         } catch (IOException ex) {
-            System.out.println("проблема с открытием потока");
+            syslog.addSysLog("проблема с открытием потока");
         }
         
         File file=new File(path.toString()+"/"+uploadedFile.getFileName());
@@ -112,7 +114,7 @@ public class TemplatesController implements Serializable {
             FileUtils.copyInputStreamToFile(is, file); 
             nameTabletSize=uploadedFile.getFileName();
         } catch (IOException ex) {
-            System.out.println("проблема с записью файла на диск");
+            syslog.addSysLog("проблема с записью файла на диск");
         }
     }
     
@@ -127,7 +129,7 @@ public class TemplatesController implements Serializable {
         try {
             is=uploadedFile.getInputstream();
         } catch (IOException ex) {
-            System.out.println("проблема с открытием потока");
+            syslog.addSysLog("проблема с открытием потока");
         }
         
         File file=new File(path.toString()+"/"+uploadedFile.getFileName());
@@ -136,7 +138,7 @@ public class TemplatesController implements Serializable {
             FileUtils.copyInputStreamToFile(is, file); 
             namePhoneSize=uploadedFile.getFileName();
         } catch (IOException ex) {
-            System.out.println("проблема с записью файла на диск");
+            syslog.addSysLog("проблема с записью файла на диск");
         }
     }
 

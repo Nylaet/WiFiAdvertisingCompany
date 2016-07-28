@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -31,6 +29,8 @@ public class ClientsController implements Serializable {
 
     @Inject
     LoginController lc;
+    @Inject
+    SysLog syslog;
     @EJB
     ClientFacade cf;
     private List<Client>clients;
@@ -94,7 +94,7 @@ public class ClientsController implements Serializable {
             }
 
         } catch (MessagingException ex) {
-            System.out.println(ex);
+            syslog.addSysLog("ClientsController.sendMail()"+ex);
             
         } finally {
 

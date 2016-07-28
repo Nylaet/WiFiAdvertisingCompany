@@ -2,6 +2,7 @@ package entitys;
 
 import enums.Role;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -43,6 +44,7 @@ public class User implements Serializable {
     }
     
     public void addLog(String msg){
+        if(log==null)log=new ArrayList<>();
         log.add(new Logger(msg));
     }
 
@@ -55,6 +57,7 @@ public class User implements Serializable {
     }
 
     public List<Logger> getLog() {
+        if(log==null)log=new ArrayList<>();
         return log;
     }
     

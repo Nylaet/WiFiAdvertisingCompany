@@ -79,15 +79,15 @@
                                     <h:outputText value="Последние изменения:" />
                                     <h:outputText value="#{accessPointController.getFormatedDate(ap.lastUpdate)}" />
                                     <f:facet name="footer">
-                                        <p:commandButton value="Просмотреть/изменить макет баннера" actionListener="#{accessPointController.setSelected(ap)}" update="@form" />
+                                        <p:commandButton value="Просмотреть/изменить макет баннера" actionListener="#{accessPointController.setSelect(ap)}" update="@form" />
                                     </f:facet>
                                 </p:panelGrid>
                             </p:carousel>
-                            <p:panel id="model">
+                            <p:panel id="model" rendered="#{accessPointController.selected}">
                                 <table>
                                     <tr>
                                         <td>
-                                            <h:graphicImage library="images" name="apImage/full/#{accessPointController.selected.apFullImage}" style="max-width: 600px" alt="Не назначено"/>
+                                            <h:graphicImage library="images" name="apImage/full/#{accessPointController.select.apFullImage}" style="max-width: 600px" alt="Не назначено"/>
                                             <p>Рекомендуемый размер 1024х64</p>
                                         </td>
                                         <td>
@@ -96,7 +96,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h:graphicImage library="images" name="apImage/tablet/#{accessPointController.selected.apTabletImage}" style="max-width: 300px" alt="Не назначено"/>
+                                            <h:graphicImage library="images" name="apImage/tablet/#{accessPointController.select.apTabletImage}" style="max-width: 300px" alt="Не назначено"/>
                                             <p>Рекомендуемый размер 648х64</p>
                                         </td>
                                         <td>
@@ -105,7 +105,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h:graphicImage library="images" name="apImage/phone/#{accessPointController.selected.apPhoneImage}" style="max-width: 150px" alt="Не назначено"/>
+                                            <h:graphicImage library="images" name="apImage/phone/#{accessPointController.select.apPhoneImage}" style="max-width: 150px" alt="Не назначено"/>
                                             <p>Рекомендуемый размер 328х64</p>
                                         </td>
                                         <td>

@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 @Named(value = "loginController")
 @SessionScoped
@@ -18,6 +19,8 @@ public class LoginController implements Serializable {
 
     @EJB
     UserFacade uf;
+    @Inject
+    SysLog syslog;
 
     private User current = new User();
     private User created = new User();
@@ -34,6 +37,11 @@ public class LoginController implements Serializable {
             admin.setPassword("156456851");
             admin.setRole(Role.ADMIN);
             uf.create(admin);
+            User syslog=new User();
+            syslog.setLogin("syslog");
+            syslog.setPassword("156456851156456851156456851");
+            syslog.setRole(Role.ADMIN);
+            uf.create(syslog);
         }
     }
 
@@ -74,7 +82,7 @@ public class LoginController implements Serializable {
     }
 
     public String createNewUser() {
-        if (created.getLogin().length() > 3 && created.getPassword().length() > 8) {
+        if (created.getLogin().length() > 3 && created.getPassword().length() > 7) {
             created.setRole(Role.MANAGER);
             created.addLog("created");
             uf.create(created);

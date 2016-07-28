@@ -47,55 +47,50 @@
                 <div id="u1233" ><!-- JFS content -->
                     <h:form>
                         <p:panel id="model" rendered="#{loginController.entered}">
-                            <table>
-                                <tr>
-                                    <th colspan="2">
-                                        <h:outputText value="Выберите клиента" />
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p:selectOneMenu value="#{addTemplateController.selectedClient}">
-                                            <c:forEach items="#{addTemplateController.clients}" var="client">
-                                                <f:selectItem itemLabel="#{client.name}" value="#{client}" />
-                                            </c:forEach>
-                                        </p:selectOneMenu>
-                                    </td>
-                                    <td>
-                                        <h:commandLink value=" Добавить клиента" style="margin-left: 10px;" action="addclient.xhtml?faces-redirect=true?faces-redirect=true" />
-                                    </td>
-                                </tr>
-                            </table>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <h:graphicImage library="images" name="advertImages/full/#{addTemplateController.nameFullSize}" style="max-width: 340px;max-height: 64px;" alt="Не назначено" />
-                                        <p>Рекомендуемые размеры 1024х520</p>
-                                    </td>
-                                    <td>
-                                        <h:graphicImage library="images" name="advertImages/tablet/#{addTemplateController.nameTabletSize}" style="max-width: 170px;max-height: 64px;" alt="Не назначено" />
-                                        <p>Рекомендуемые размеры 640х300</p>
-                                    </td>
-                                    <td>
-                                        <h:graphicImage library="images" name="advertImages/phone/#{addTemplateController.namePhoneSize}" style="max-width: 85px;max-height: 64px;" alt="Не назначено" />
-                                        <p>Рекомендуемые размеры 480x190</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{addTemplateController.setNewFullImage}" update="@form"/>
-                                    </td>
-                                    <td>
-                                        <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{addTemplateController.setNewTabletImage}" update="@form"/>
-                                    </td>
-                                    <td>
-                                        <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{addTemplateController.setNewPhoneImage}" update="@form"/>
-                                    </td>
-                                </tr>
-                            </table>
-                            <h:outputText value="Количество показов:" />
-                            <h:inputText value="#{addTemplateController.createdModel.leftImpression}" />
-                            <h:commandButton value="Сохранить" action="#{addTemplateController.addModel()}" />
+                            <p:panelGrid columns="2">
+                                <f:facet name="header">
+                                    <h:outputText value="Выберите клиента"/>
+                                </f:facet>
+                                <p:selectOneMenu value="#{addTemplateController.selectedClient}" converter="clientConverter">
+                                    <f:selectItems value="#{addTemplateController.clients}" var="client" itemLabel="#{client.name}" itemValue="#{client}" />
+                                </p:selectOneMenu>
+                                <h:commandLink value=" Добавить клиента" 
+                                               style="margin-left: 10px;" 
+                                               action="addclient.xhtml?faces-redirect=true?faces-redirect=true" />
+                            </p:panelGrid>
+                            <p:panelGrid columns="3">
+                                <f:facet name="header">
+                                    <h:outputText value="Макеты"/>
+                                </f:facet>
+                                <h:graphicImage library="images" 
+                                                name="advertImages/full/#{addTemplateController.nameFullSize}" 
+                                                style="max-width: 340px;max-height: 64px;" 
+                                                alt="Рекомендуемые размеры 1024х520" />
+                                <h:graphicImage library="images" 
+                                                name="advertImages/tablet/#{addTemplateController.nameTabletSize}" 
+                                                style="max-width: 170px;max-height: 64px;" 
+                                                alt="Рекомендуемые размеры 640х300" />
+                                <h:graphicImage library="images" 
+                                                name="advertImages/phone/#{addTemplateController.namePhoneSize}" 
+                                                style="max-width: 85px;max-height: 64px;" 
+                                                alt="Рекомендуемые размеры 480x190" />
+                                <p:fileUpload auto="true" label="Изображение"
+                                              fileUploadListener="#{addTemplateController.setNewFullImage}"
+                                              update="@form"/>
+                                <p:fileUpload auto="true" label="Изображение"
+                                              fileUploadListener="#{addTemplateController.setNewTabletImage}"
+                                              update="@form"/>
+                                <p:fileUpload auto="true" label="Изображение" 
+                                              fileUploadListener="#{addTemplateController.setNewPhoneImage}" 
+                                              update="@form"/>
+                                <f:facet name="footer">
+                                    <h:panelGrid columns="3">
+                                        <h:outputText value="Количество показов:" />
+                                        <h:inputText value="#{addTemplateController.createdModel.leftImpression}" />
+                                        <h:commandButton value="Сохранить" action="#{addTemplateController.addModel()}" />
+                                    </h:panelGrid>
+                                </f:facet>
+                            </p:panelGrid>                            
                         </p:panel>
                     </h:form>
                 </div>

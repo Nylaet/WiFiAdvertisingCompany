@@ -32,13 +32,16 @@ public class AccessPointController implements Serializable {
     AccessPointFacade apf;
     @Inject
     LoginController lc;
+    @Inject
+    SysLog syslog;
     
-    private AccessPoint selected;
+    private AccessPoint select;
     private List <AccessPoint> aps;
     private String selectedAPFullImage;
     private String selectedAPTabletImage;
     private String selectedAPPhoneImage;
     private String numVisible;
+    private boolean selected=false;
     
     @PostConstruct
     public void init(){
@@ -62,7 +65,7 @@ public class AccessPointController implements Serializable {
         try {
             is=uploadedFile.getInputstream();
         } catch (IOException ex) {
-            System.out.println("проблема с открытием потока");
+            syslog.addSysLog("проблема с открытием потока");
         }
         
         File file=new File(path.toString()+"/"+uploadedFile.getFileName());
@@ -71,7 +74,7 @@ public class AccessPointController implements Serializable {
             FileUtils.copyInputStreamToFile(is, file); 
             selectedAPFullImage=uploadedFile.getFileName();
         } catch (IOException ex) {
-            System.out.println("проблема с записью файла на диск");
+            syslog.addSysLog("проблема с записью файла на диск");
         }
     }
 
@@ -86,7 +89,7 @@ public class AccessPointController implements Serializable {
         try {
             is=uploadedFile.getInputstream();
         } catch (IOException ex) {
-            System.out.println("проблема с открытием потока");
+            syslog.addSysLog("проблема с открытием потока");
         }
         
         File file=new File(path.toString()+"/"+uploadedFile.getFileName());
@@ -95,7 +98,7 @@ public class AccessPointController implements Serializable {
             FileUtils.copyInputStreamToFile(is, file); 
             selectedAPTabletImage=uploadedFile.getFileName();
         } catch (IOException ex) {
-            System.out.println("проблема с записью файла на диск");
+            syslog.addSysLog("проблема с записью файла на диск");
         }
     }
     
@@ -110,7 +113,7 @@ public class AccessPointController implements Serializable {
         try {
             is=uploadedFile.getInputstream();
         } catch (IOException ex) {
-            System.out.println("проблема с открытием потока");
+            syslog.addSysLog("проблема с открытием потока");
         }
         
         File file=new File(path.toString()+"/"+uploadedFile.getFileName());
@@ -119,16 +122,16 @@ public class AccessPointController implements Serializable {
             FileUtils.copyInputStreamToFile(is, file); 
             selectedAPPhoneImage=uploadedFile.getFileName();
         } catch (IOException ex) {
-            System.out.println("проблема с записью файла на диск");
+            syslog.addSysLog("проблема с записью файла на диск");
         }
     }
     public void updateSelected(){
-        if(apf.find(selected.getId())!=null){
-            if(selectedAPFullImage.length()>0)selected.setApFullImage(selectedAPFullImage);
-            if(selectedAPTabletImage.length()>0)selected.setApTabletImage(selectedAPTabletImage);
-            if(selectedAPPhoneImage.length()>0)selected.setApPhoneImage(selectedAPPhoneImage);
-            apf.edit(selected);
-            lc.getCurrent().addLog(selected.getId()+" ap modified");
+        if(apf.find(select.getId())!=null){
+            if(selectedAPFullImage.length()>0)select.setApFullImage(selectedAPFullImage);
+            if(selectedAPTabletImage.length()>0)select.setApTabletImage(selectedAPTabletImage);
+            if(selectedAPPhoneImage.length()>0)select.setApPhoneImage(selectedAPPhoneImage);
+            apf.edit(select);
+            lc.getCurrent().addLog(select.getId()+" ap modified");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Точка доступа обновлена"));
             return;
         }
@@ -143,17 +146,17 @@ public class AccessPointController implements Serializable {
         this.aps = aps;
     }
 
-    public AccessPoint getSelected() {
-        if(selected==null)selected=new AccessPoint();
-        return selected;
+    public AccessPoint getSelect() {
+        if(select==null)select=new AccessPoint();
+        return select;
     }
 
-    public void setSelected(AccessPoint selected) {
-        this.selected = selected;
+    public void setSelect(AccessPoint select) {
+        this.select = select;
     }
     
     public String getFormatedDate(Date date){
-        SimpleDateFormat sdf=new SimpleDateFormat("dd-mm hh:MM");
+        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM hh:mm");
         return(date!=null?sdf.format(date):"Не известно"); 
     }
 
@@ -165,6 +168,15 @@ public class AccessPointController implements Serializable {
 
     public void setNumVisible(String numVisible) {
         this.numVisible = numVisible;
+    }
+
+    public boolean isSelected() {
+        if(getSelect().getId()>0)return true;
+        return false;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
     
     
