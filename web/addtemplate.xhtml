@@ -11,6 +11,7 @@
         <h:outputStylesheet library="css" name="addtemplate.css"/>
         <h:outputStylesheet library="css" name="site_global.css"/>
         <h:outputStylesheet library="css" name="master-b.css"/>
+        <h:outputStylesheet library="css" name="contentImportant.css"/>
     </h:head>
     <h:body>
         <p:growl autoUpdate="true" />
@@ -23,7 +24,9 @@
                 <a class="nonblock nontext Button transition clearfix" id="buttonu727" href="accesspoints.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u729"><!-- image --><img class="block" id="u729_img" src="resources/images/pageContent/wifi-segoi3-gray.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u728-4" alt="Точки доступа" src="resources/images/pageContent/u728-4.png" data-image-width="134"/><!-- rasterized frame --></a>
                 <a class="nonblock nontext Button transition clearfix" id="buttonu731" href="templates.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u733"><!-- image --><img class="block" id="u733_img" src="resources/images/pageContent/templates-gray.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u732-4" alt="Макеты" src="resources/images/pageContent/u732-4.png" data-image-width="134"/><!-- rasterized frame --></a>
                 <a class="nonblock nontext Button transition clearfix" id="buttonu735" href="clients.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u736"><!-- image --><img class="block" id="u736_img" src="resources/images/pageContent/happy_users.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u738-4" alt="Клиенты" src="resources/images/pageContent/u738-4.png" data-image-width="135"/><!-- rasterized frame --></a>
-                <a hidden="#{!loginController.admin}" class="nonblock nontext Button transition clearfix" id="buttonu739" href="adminpage.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u740"><!-- image --><img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame --></a>
+                <c:if test="#{loginController.admin}">
+                    <a hidden="#{!loginController.admin}" class="nonblock nontext Button transition clearfix" id="buttonu739" href="adminpage.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u740"><!-- image --><img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame --></a>
+                </c:if>
             </div>
             <div class="clearfix grpelem" id="pbuttonu743"><!-- group -->
                 <h:form>
@@ -47,20 +50,12 @@
                 <div id="u1233" ><!-- JFS content -->
                     <h:form>
                         <p:panel id="model" rendered="#{loginController.entered}">
-                            <p:panelGrid columns="2">
-                                <f:facet name="header">
-                                    <h:outputText value="Выберите клиента"/>
-                                </f:facet>
-                                <p:selectOneMenu value="#{addTemplateController.selectedClient}" converter="clientConverter">
-                                    <f:selectItems value="#{addTemplateController.clients}" var="client" itemLabel="#{client.name}" itemValue="#{client}" />
-                                </p:selectOneMenu>
-                                <h:commandLink value=" Добавить клиента" 
-                                               style="margin-left: 10px;" 
-                                               action="addclient.xhtml?faces-redirect=true?faces-redirect=true" />
-                            </p:panelGrid>
+                            <f:facet name="header">
+                                <h:outputText value="#{templatesCntroller.selected.name}" styleClass="text-form"/>
+                            </f:facet>
                             <p:panelGrid columns="3">
                                 <f:facet name="header">
-                                    <h:outputText value="Макеты"/>
+                                    <h:outputText value="Макеты" styleClass="text-form"/>
                                 </f:facet>
                                 <h:graphicImage library="images" 
                                                 name="advertImages/full/#{addTemplateController.nameFullSize}" 
@@ -74,20 +69,20 @@
                                                 name="advertImages/phone/#{addTemplateController.namePhoneSize}" 
                                                 style="max-width: 85px;max-height: 64px;" 
                                                 alt="Рекомендуемые размеры 480x190" />
-                                <p:fileUpload auto="true" label="Изображение"
+                                <p:fileUpload auto="true" label="1024х520"
                                               fileUploadListener="#{addTemplateController.setNewFullImage}"
-                                              update="@form"/>
-                                <p:fileUpload auto="true" label="Изображение"
+                                              update="@form" styleClass="text-form"/>
+                                <p:fileUpload auto="true" label="640х300"
                                               fileUploadListener="#{addTemplateController.setNewTabletImage}"
-                                              update="@form"/>
-                                <p:fileUpload auto="true" label="Изображение" 
+                                              update="@form" styleClass="text-form"/>
+                                <p:fileUpload auto="true" label="480x190" 
                                               fileUploadListener="#{addTemplateController.setNewPhoneImage}" 
-                                              update="@form"/>
+                                              update="@form" styleClass="text-form"/>
                                 <f:facet name="footer">
-                                    <h:panelGrid columns="3">
+                                    <h:panelGrid columns="3" >
                                         <h:outputText value="Количество показов:" />
                                         <h:inputText value="#{addTemplateController.createdModel.leftImpression}" />
-                                        <h:commandButton value="Сохранить" action="#{addTemplateController.addModel()}" />
+                                        <p:commandButton value="Сохранить" action="#{addTemplateController.addModel()}" />
                                     </h:panelGrid>
                                 </f:facet>
                             </p:panelGrid>                            

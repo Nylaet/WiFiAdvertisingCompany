@@ -3,13 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>WiFi Promotion Group</title>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
         <h:outputStylesheet library="css" name="addclient.css"/>
         <h:outputStylesheet library="css" name="site_global.css"/>
         <h:outputStylesheet library="css" name="master-b.css"/>
+        <h:outputStylesheet library="css" name="contentImportant.css"/>
     </h:head>
     <h:body>
         <p:growl autoUpdate="true" />
@@ -22,7 +24,9 @@
                 <a class="nonblock nontext Button transition clearfix" id="buttonu727" href="accesspoints.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u729"><!-- image --><img class="block" id="u729_img" src="resources/images/pageContent/wifi-segoi3-gray.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u728-4" alt="Точки доступа" src="resources/images/pageContent/u728-4.png" data-image-width="134"/><!-- rasterized frame --></a>
                 <a class="nonblock nontext Button transition clearfix" id="buttonu731" href="templates.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u733"><!-- image --><img class="block" id="u733_img" src="resources/images/pageContent/templates-gray.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u732-4" alt="Макеты" src="resources/images/pageContent/u732-4.png" data-image-width="134"/><!-- rasterized frame --></a>
                 <a class="nonblock nontext Button transition clearfix" id="buttonu735" href="clients.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u736"><!-- image --><img class="block" id="u736_img" src="resources/images/pageContent/happy_users.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u738-4" alt="Клиенты" src="resources/images/pageContent/u738-4.png" data-image-width="135"/><!-- rasterized frame --></a>
-                <a hidden="#{loginController.admin}" class="nonblock nontext Button transition clearfix" id="buttonu739" href="adminpage.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u740"><!-- image --><img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame --></a>
+                <c:if test="#{loginController.admin}">
+                    <a hidden="#{loginController.admin}" class="nonblock nontext Button transition clearfix" id="buttonu739" href="adminpage.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u740"><!-- image --><img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/></div><img class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame --></a>
+                </c:if>
             </div>
             <div class="clearfix grpelem" id="pbuttonu743"><!-- group -->
                 <h:form>
@@ -42,7 +46,7 @@
                     <h:form rendered="#{loginController.entered}">
                         <p:panelGrid columns="2">
                             <f:facet name="header">
-                                <h:outputText value="Новый клиент"/>
+                                <h:outputText value="Новый клиент" styleClass="text-form"/>
                             </f:facet>
                             <h:outputText value="Имя:" />
                             <h:inputText value="#{clientsController.created.name}" />
@@ -51,8 +55,8 @@
                             <h:outputText value="e-mail:" />
                             <h:inputText value="#{clientsController.created.email}" /> 
                             <f:facet name="footer">
-                                <h:commandButton value="Создать" 
-                                                 action="#{clientsController.createClient()}" />
+                                <p:commandButton value="Создать" 
+                                                 action="#{clientsController.createClient()}" styleClass="text-form" />
                             </f:facet>
                         </p:panelGrid>                        
                     </h:form>

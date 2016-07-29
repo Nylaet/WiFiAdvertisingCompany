@@ -11,6 +11,7 @@
         <h:outputStylesheet library="css" name="accesspoints.css"/>
         <h:outputStylesheet library="css" name="site_global.css"/>
         <h:outputStylesheet library="css" name="master-b.css"/>
+        <h:outputStylesheet library="css" name="contentImportant.css"/>
     </h:head>
     <h:body>
         <p:growl autoUpdate="true" />
@@ -38,12 +39,14 @@
                     </div>
                     <img class="grpelem" id="u738-4" alt="Клиенты" src="resources/images/pageContent/u738-4.png" data-image-width="135"/><!-- rasterized frame -->
                 </a>
-                <a class="nonblock nontext Button transition shadow clearfix" id="buttonu739" href="adminpage.xhtml?faces-redirect=true"><!-- container box -->
-                    <div class="clip_frame grpelem" id="u740"><!-- image -->
-                        <img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
-                    </div>
-                    <img hidden="#{!loginController.admin}" class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame -->
-                </a>
+                <c:if test="#{loginController.admin}">
+                    <a class="nonblock nontext Button transition shadow clearfix" id="buttonu739" href="adminpage.xhtml?faces-redirect=true"><!-- container box -->
+                        <div class="clip_frame grpelem" id="u740"><!-- image -->
+                            <img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
+                        </div>
+                        <img hidden="#{!loginController.admin}" class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame -->
+                    </a>
+                </c:if>
             </div>
             <div class="clearfix grpelem" id="pbuttonu743"><!-- group -->
                 <h:form>
@@ -66,10 +69,17 @@
                 <div id="u1233"><!-- JSF content -->
                     <c:if test="#{loginController.entered}">
                         <h:form>
-                            <p:carousel numVisible="#{accessPointController.numVisible}" value="#{accessPointController.aps}" var="ap" headerText="Точки доступа" itemStyle="text-align:center" responsive="true" >
+                            <p:carousel numVisible="#{accessPointController.numVisible}" 
+                                        value="#{accessPointController.aps}" var="ap" 
+                                        styleClass="carousel"
+                                        itemStyle="text-align:center" 
+                                        responsive="true" >
+                                <f:facet name="header">
+                                    <h:outputText value="Точки доступа" styleClass="text-form" />
+                                </f:facet>
                                 <p:panelGrid columns="2">
                                     <f:facet name="header">
-                                        <h:outputText value="#{ap.name}" />
+                                        <h:outputText value="#{ap.name}" styleClass="text-form" />
                                     </f:facet>
 
                                     <h:outputText value="ID устройства:" />
@@ -79,41 +89,44 @@
                                     <h:outputText value="Последние изменения:" />
                                     <h:outputText value="#{accessPointController.getFormatedDate(ap.lastUpdate)}" />
                                     <f:facet name="footer">
-                                        <p:commandButton value="Просмотреть/изменить макет баннера" actionListener="#{accessPointController.setSelect(ap)}" update="@form" />
+                                        <p:commandButton value="Просмотреть/изменить макет баннера" actionListener="#{accessPointController.setSelect(ap)}" update="@form" styleClass="text-form" />
                                     </f:facet>
                                 </p:panelGrid>
                             </p:carousel>
-                            <p:panel id="model" rendered="#{accessPointController.selected}">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <h:graphicImage library="images" name="apImage/full/#{accessPointController.select.apFullImage}" style="max-width: 600px" alt="Не назначено"/>
-                                            <p>Рекомендуемый размер 1024х64</p>
-                                        </td>
-                                        <td>
-                                            <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{accessPointController.setAPFullImage}" update="@form"/>                             
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h:graphicImage library="images" name="apImage/tablet/#{accessPointController.select.apTabletImage}" style="max-width: 300px" alt="Не назначено"/>
-                                            <p>Рекомендуемый размер 648х64</p>
-                                        </td>
-                                        <td>
-                                            <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{accessPointController.setAPTabletImage}" update="@form"/>                             
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h:graphicImage library="images" name="apImage/phone/#{accessPointController.select.apPhoneImage}" style="max-width: 150px" alt="Не назначено"/>
-                                            <p>Рекомендуемый размер 328х64</p>
-                                        </td>
-                                        <td>
-                                            <p:fileUpload auto="true" label="Изображение" fileUploadListener="#{accessPointController.setAPPhoneImage}" update="@form"/>                             
-                                        </td>
-                                    </tr>
-                                </table>
-                                <p:commandButton value="Сохранить" action="#{accessPointController.updateSelected()}" />
+                            <p:panel id="model" rendered="#{accessPointController.selected}" >
+                                <p:panelGrid columns="3">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{accessPointController.select.name}" styleClass="text-form" />
+                                    </f:facet>
+                                    <h:graphicImage library="images" 
+                                                    name="apImage/full/#{accessPointController.select.apFullImage}" 
+                                                    style="max-width: 600px" 
+                                                    alt="Рекомендуемый размер 1024х64"/>
+                                    <h:graphicImage library="images" 
+                                                    name="apImage/tablet/#{accessPointController.select.apTabletImage}" 
+                                                    style="max-width: 300px" 
+                                                    alt="Рекомендуемый размер 648х64"/>
+                                    <h:graphicImage library="images" 
+                                                    name="apImage/phone/#{accessPointController.select.apPhoneImage}" 
+                                                    style="max-width: 150px" 
+                                                    alt="Рекомендуемый размер 328х64"/>
+                                    <p:fileUpload auto="true" label="1024х64" 
+                                                  fileUploadListener="#{accessPointController.setAPFullImage}" 
+                                                  update="@form" styleClass="text-form"/> 
+                                    <p:fileUpload auto="true" label="648х64" 
+                                                  fileUploadListener="#{accessPointController.setAPTabletImage}" 
+                                                  update="@form" styleClass="text-form"/>
+                                    <p:fileUpload auto="true" label="328х64" 
+                                                  fileUploadListener="#{accessPointController.setAPPhoneImage}" 
+                                                  update="@form" styleClass="text-form"/>   
+                                    <f:facet name="footer">
+                                        <h:panelGrid columns="3" style="width: 100%">
+                                            <h:outputText value="Имя точки:" />
+                                            <h:inputText value="#{accessPointController.select.name}" />
+                                            <p:commandButton value="Сохранить" action="#{accessPointController.updateSelected()}" update="@all" />
+                                        </h:panelGrid>                                        
+                                    </f:facet>
+                                </p:panelGrid>
                             </p:panel>
                         </h:form>
                     </c:if>

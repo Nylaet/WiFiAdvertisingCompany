@@ -36,6 +36,8 @@ public class AddTemplateController implements Serializable {
     private LoginController lc;
     @Inject
     SysLog syslog;
+    @Inject
+    TemplatesController tc;
 
     Model createdModel;
     Client selectedClient;
@@ -48,7 +50,7 @@ public class AddTemplateController implements Serializable {
     }
 
     public String addModel() {
-        if (selectedClient != null) {
+        if (tc.getSelected() != null) {
             if (nameFullSize.length() > 0 && createdModel.getLeftImpression() > 0) {
                 createdModel.setNameFullSize(nameFullSize);
                 createdModel.setNameTabletSize(nameTabletSize);

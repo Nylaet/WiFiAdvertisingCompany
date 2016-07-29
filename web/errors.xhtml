@@ -8,6 +8,9 @@
         <title>SysLog</title>
     </h:head>
     <h:body>
+        <h:form>
+            <p:commandButton value="return" action="adminpage.xhtml?faces-redirect=true" />
+        </h:form>
         <p:panel rendered="#{loginController.admin}">
             <p:scrollPanel style="width: 90%;height: 70%">
                 <p:panelGrid columns="2">

@@ -49,7 +49,7 @@ public class LoginController implements Serializable {
     }
 
     public String login() {
-        List<User> users = uf.findAll();
+        users = uf.findAll();
         for (User user : users) {
             if (user.getLogin().equals(current.getLogin())) {
                 if (user.getPassword().equals(current.getPassword())) {
@@ -88,6 +88,7 @@ public class LoginController implements Serializable {
             uf.create(created);
             current.addLog(created.getLogin()+"created");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Пользователь создан"));
+            created=new User();
             return "";
         }
         return "";
@@ -97,7 +98,14 @@ public class LoginController implements Serializable {
         uf.remove(user);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Пользователь удален"));
     }
-
+    
+    public String editCurrent(){
+        uf.edit(current);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Пароль изменен"));
+        current.addLog("password changed");
+        return "";
+    }
+    
     public User getCurrent() {
         return current;
     }

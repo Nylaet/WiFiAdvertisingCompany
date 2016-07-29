@@ -10,6 +10,7 @@
         <h:outputStylesheet library="css" name="adminpage.css"/>
         <h:outputStylesheet library="css" name="site_global.css"/>
         <h:outputStylesheet library="css" name="master-b.css"/>
+        <h:outputStylesheet library="css" name="contentImportant.css"/>
     </h:head>
     <h:body>
         <p:growl autoUpdate="true" />
@@ -42,23 +43,25 @@
                     <h:form rendered="#{loginController.admin}">
                         <p:panelGrid columns="2" >
                             <f:facet name="header">
-                                <h:outputText value="Новый пользователь" />
+                                <h:outputText value="Новый пользователь" styleClass="text-form" />
                             </f:facet>
                             <h:outputText value="login:" />
                             <h:inputText value="#{loginController.created.login}" />
                             <h:outputText value="password:" />
                             <h:inputText value="#{loginController.created.password}" />
                             <f:facet name="footer">
-                                <h:commandButton value="Создать" action="#{loginController.createNewUser()}" />
+                                <p:commandButton value="Создать" action="#{loginController.createNewUser()}" />
                             </f:facet>
                         </p:panelGrid>
                         <hr/>
                         <p:dataList value="#{loginController.users}" var="user" type="ordered">
                             <f:facet name="header">
-                                <h:outputText value="Пользователи"/>
+                                <h:outputText value="Пользователи" styleClass="text-form"/>
                             </f:facet>
                             <h:outputText value="Пользователь:#{user.login}, Права:#{user.role.name}" />
                         </p:dataList>
+                        <hr/>
+                        <p:commandButton value="Errors" action="errors.xhtml?faces-redirect=true" />
                     </h:form>
                 </div>
             </div>

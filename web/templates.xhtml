@@ -11,6 +11,7 @@
         <h:outputStylesheet library="css" name="templates.css"/>
         <h:outputStylesheet library="css" name="site_global.css"/>
         <h:outputStylesheet library="css" name="master-b.css"/>
+        <h:outputStylesheet library="css" name="contentImportant.css"/>
     </h:head>
     <h:body>
         <p:growl autoUpdate="true" />
@@ -38,12 +39,14 @@
                     </div>
                     <img class="grpelem" id="u738-4" alt="Клиенты" src="resources/images/pageContent/u738-4.png" data-image-width="135"/><!-- rasterized frame -->
                 </a>
-                <a hidden="#{!loginController.admin}" class="nonblock nontext Button transition clearfix" id="buttonu739" href="adminpage.xhtml?faces-redirect=true"><!-- container box -->
-                    <div class="clip_frame grpelem" id="u740"><!-- image -->
-                        <img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
-                    </div>
-                    <img  class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame -->
-                </a>
+                <c:if test="#{loginController.admin}">
+                    <a hidden="#{!loginController.admin}" class="nonblock nontext Button transition clearfix" id="buttonu739" href="adminpage.xhtml?faces-redirect=true"><!-- container box -->
+                        <div class="clip_frame grpelem" id="u740"><!-- image -->
+                            <img class="block" id="u740_img" src="resources/images/pageContent/settings-gray-segoi.png" alt="" data-image-width="48" data-image-height="48"/>
+                        </div>
+                        <img  class="grpelem" id="u742-4" alt="Администрирование" src="resources/images/pageContent/u742-4.png" data-image-width="163"/><!-- rasterized frame -->
+                    </a>
+                </c:if>
             </div>
             <div class="clearfix grpelem" id="pbuttonu743"><!-- group -->
                 <h:form>
@@ -64,7 +67,10 @@
 
                         <h:form>
                             <c:forEach items="#{templatesCntroller.clients}" var="client">
-                                <p:panel toggleable="true" collapsed="true" header="#{client.name}" id="model">
+                                <p:panel toggleable="true" collapsed="true" id="model">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{client.name}" styleClass="text-form" />
+                                    </f:facet>
                                     <c:forEach items="#{client.models}" var="model">
                                         <p:panelGrid columns="3">
                                             <h:graphicImage library="images" 
@@ -95,26 +101,26 @@
                                                     <h:inputText value="#{model.leftImpression}" />
                                                     <p:commandButton update="@form" value="Сохранить" 
                                                                      action="#{templatesCntroller.updateClient(model)}" />
-                                                </h:panelGrid>
+                                                </h:panelGrid>                                                  
                                             </f:facet>
                                         </p:panelGrid> 
                                     </c:forEach>
+                                    <h:commandLink action="addtemplate.xhtml?faces-redirect=true" actionListener="#{templatesCntroller.setSelected(client)}" >
+                                        <div class="Button transition shadow clearfix" id="buttonu1156"><!-- container box -->
+                                            <div class="clip_frame grpelem" id="u1169"><!-- image -->
+                                                <img class="block" id="u1169_img" src="resources/images/pageContent/add-gray.png" alt="" data-image-width="52" data-image-height="52"/>
+                                            </div>
+                                            <img class="grpelem" id="u1171-4" alt="Добавить макет" src="resources/images/pageContent/u1171-4.png" data-image-width="171"/><!-- rasterized frame -->
+                                        </div>
+                                    </h:commandLink>  
                                 </p:panel>
+
                             </c:forEach>
                         </h:form>
                     </c:if>
                 </div>
             </div>
-            <h:form>
-                <h:commandLink action="addtemplate.xhtml?faces-redirect=true" rendered="#{loginController.entered}">
-                    <div class="Button transition shadow clearfix" id="buttonu1156"><!-- container box -->
-                        <div class="clip_frame grpelem" id="u1169"><!-- image -->
-                            <img class="block" id="u1169_img" src="resources/images/pageContent/add-gray.png" alt="" data-image-width="52" data-image-height="52"/>
-                        </div>
-                        <img class="grpelem" id="u1171-4" alt="Добавить макет" src="resources/images/pageContent/u1171-4.png" data-image-width="171"/><!-- rasterized frame -->
-                    </div>
-                </h:commandLink>
-            </h:form>
+
             <div class="verticalspacer"></div>
         </div>
     </h:body>

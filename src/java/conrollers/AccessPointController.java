@@ -166,7 +166,7 @@ public class AccessPointController implements Serializable {
     }
 
     public String getFormatedDate(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM hh:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM HH:mm");
         return (date != null ? sdf.format(date) : "Не известно");
     }
 
@@ -188,7 +188,7 @@ public class AccessPointController implements Serializable {
         try {
             if (getSelect().getId() > 0) {
                 return true;
-            }
+    }
         } catch (NullPointerException npe) {
         }
         return false;
