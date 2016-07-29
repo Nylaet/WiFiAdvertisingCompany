@@ -51,11 +51,13 @@ public class AddTemplateController implements Serializable {
 
     public String addModel() {
         if (tc.getSelected() != null) {
+            selectedClient=tc.getSelected();
             if (nameFullSize.length() > 0 && createdModel.getLeftImpression() > 0) {
                 createdModel.setNameFullSize(nameFullSize);
                 createdModel.setNameTabletSize(nameTabletSize);
                 createdModel.setNamePhoneSize(namePhoneSize);
-                cf.find(selectedClient.getId()).addModel(createdModel);
+                selectedClient.addModel(createdModel);
+                cf.edit(selectedClient);
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Сохранено"));
                 lc.getCurrent().addLog(createdModel.getId() + " model added");
                 return "templates.xhtml?faces-redirect=true";
@@ -120,7 +122,7 @@ public class AddTemplateController implements Serializable {
     }
 
     public void setNewFullImage(FileUploadEvent event) {
-        String relative = "/resources/images/advertImage/full/";
+        String relative = "/resources/images/advertImages/full/";
         ServletContext context = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
         String absolute = context.getRealPath(relative);
 
@@ -144,7 +146,7 @@ public class AddTemplateController implements Serializable {
     }
 
     public void setNewTabletImage(FileUploadEvent event) {
-        String relative = "/resources/images/advertImage/tablet/";
+        String relative = "/resources/images/advertImages/tablet/";
         ServletContext context = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
         String absolute = context.getRealPath(relative);
 
@@ -168,7 +170,7 @@ public class AddTemplateController implements Serializable {
     }
 
     public void setNewPhoneImage(FileUploadEvent event) {
-        String relative = "/resources/images/advertImage/phone/";
+        String relative = "/resources/images/advertImages/phone/";
         ServletContext context = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
         String absolute = context.getRealPath(relative);
 

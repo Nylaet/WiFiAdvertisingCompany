@@ -123,7 +123,7 @@
                                         <h:panelGrid columns="3" style="width: 100%">
                                             <h:outputText value="Имя точки:" />
                                             <h:inputText value="#{accessPointController.select.name}" />
-                                            <p:commandButton value="Сохранить" action="#{accessPointController.updateSelected()}" update="@all" />
+                                            <p:commandButton value="Сохранить" actionListener="#{accessPointController.updateSelected()}" update="@all" />
                                         </h:panelGrid>                                        
                                     </f:facet>
                                 </p:panelGrid>

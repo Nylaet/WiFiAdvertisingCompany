@@ -71,7 +71,7 @@ public class TemplatesController implements Serializable {
     }
     
     public void setNewFullImage(FileUploadEvent event){
-        String relative="/resources/images/advertImage/full/";
+        String relative="/resources/images/advertImages/full/";
         ServletContext context=(ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
         String absolute=context.getRealPath(relative);
         
@@ -95,7 +95,7 @@ public class TemplatesController implements Serializable {
     }
     
     public void setNewTabletImage(FileUploadEvent event){
-        String relative="/resources/images/advertImage/tablet/";
+        String relative="/resources/images/advertImages/tablet/";
         ServletContext context=(ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
         String absolute=context.getRealPath(relative);
         
@@ -119,7 +119,7 @@ public class TemplatesController implements Serializable {
     }
     
     public void setNewPhoneImage(FileUploadEvent event){
-        String relative="/resources/images/advertImage/phone/";
+        String relative="/resources/images/advertImages/phone/";
         ServletContext context=(ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
         String absolute=context.getRealPath(relative);
         
