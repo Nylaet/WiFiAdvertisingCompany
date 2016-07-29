@@ -12,115 +12,31 @@
     </h:head>
     <h:body>
         <p:growl autoUpdate="true" />
-        <div class="breakpoint active" id="bp_infinity" data-min-width="769"><!-- responsive breakpoint node -->
-            <div class="clearfix borderbox" id="page"><!-- group -->
-                <h:form>
-                    <p:commandLink actionListener="#{indexController.modelNameFull}" update="fullImage">
-                        <div class="Button clearfix grpelem" id="buttonu1316"><!-- container box -->
-                            <div class="clip_frame grpelem" id="u1336"><!-- image -->
-                                <img class="block temp_no_img_src" id="u1336_img" 
-                                     src="resources/images/pageContent/prew52x52.png"/>
-                            </div>
-                        </div>
-                    </p:commandLink>
-
-                    <div id="u1304-wrapper" class="shared_content" data-content-guid="u1304-wrapper_content">
-                        <div id="u1304" style="text-align: center"><!-- AP adv -->
-                            <h:graphicImage library="images" name="apImage/full/#{indexController.apFullImage}"
-                                            style="width: 1024px;height: 64px;" />
-                        </div>
-                    </div>
-
-                    <div id="u1307-wrapper" class="shared_content" data-content-guid="u1307-wrapper_content">
-                        <div id="u1307" style="text-align: center"><!-- WPG adv -->
-                            <h:graphicImage library="images" name="advertImages/full/#{indexController.modelNameFull}"
-                                            style="width: 1024px;height: 512px;" id="fullImage" />
-                        </div>
-                    </div>
-
-                    <div id="buttonu1366-wrapper">
-                        <a class="nonblock nontext Button clearfix" id="buttonu1366" 
-                           href="http://google.com" target="_blank" title="Поиск"><!-- container box -->
-                            <div class="clip_frame grpelem" id="u1385"><!-- image -->
-                                <img class="block temp_no_img_src" id="u1385_img" 
-                                     src="resources/images/pageContent/google.png" alt=""/>
-                            </div>
-                        </a>
-                    </div>
-
-                    <p:commandLink actionListener="#{indexController.modelNameFull}" update="fullImage">
-                        <div class="Button clearfix grpelem" id="buttonu1346"><!-- container box -->
-                            <div class="clip_frame grpelem" id="u1356"><!-- image -->
-                                <img class="block temp_no_img_src" id="u1356_img" 
-                                     src="resources/images/pageContent/next52x52.png"/>
-                            </div>
-                        </div>
-                    </p:commandLink>
-                </h:form>
-                <div class="verticalspacer shared_content" data-content-guid="page_5_content"></div>
+        <div class="clearfix borderbox" id="page"><!-- group -->
+            <div class="grpelem" id="u114"><!-- Head Banner Place -->
+            
             </div>
-        </div>
-        <div class="breakpoint" id="bp_768" data-min-width="321" data-max-width="768"><!-- responsive breakpoint node -->
-            <div class="clearfix borderbox temp_no_id" data-orig-id="page"><!-- group -->
-                <h:form>
-                    <p:commandLink actionListener="#{indexController.modelNameTablet}" update="tabletImage">
-                        <div class="Button clearfix grpelem temp_no_id" data-orig-id="buttonu1316"><!-- container box -->
-                            <img class="grpelem temp_no_id temp_no_img_src" alt="" 
-                                 src="resources/images/pageContent/prew-u1336.png"/><!-- rasterized frame -->
-                        </div>
-                    </p:commandLink>
-                    <div class="placeholder" data-placeholder-for="u1304-wrapper_content" style="text-align: center"><!-- placeholder node -->
-                        <h:graphicImage library="images" name="apImage/tablet/#{indexController.apTabletImage}"
-                                        style="width: 640px;height: 64px;" />
-                    </div>
-                    <div class="placeholder" data-placeholder-for="u1307-wrapper_content" style="text-align: center"><!-- placeholder node -->
-                        <h:graphicImage library="images" name="advertImages/tablet/#{indexController.modelNameTablet}"
-                                        style="width: 640px;height: 512px;" id="tabletImage"/>
-                    </div>
-                    <div class="temp_no_id" data-orig-id="buttonu1366-wrapper">
-                        <a class="nonblock nontext Button clearfix temp_no_id" href="http://google.com" target="_blank" title="Поиск" data-orig-id="buttonu1366"><!-- container box --><div class="clip_frame grpelem temp_no_id" data-orig-id="u1385"><!-- image --><img class="block temp_no_id temp_no_img_src" data-orig-src="resources/images/pageContent/google.png" alt="" data-image-width="157" data-image-height="57" data-orig-id="u1385_img" src="resources/images/pageContent/blank.gif"/></div></a>
-                    </div>
-                    <p:commandLink actionListener="#{indexController.modelNameTablet}" update="tabletImage">
-                        <div class="Button clearfix grpelem temp_no_id" data-orig-id="buttonu1346"><!-- container box -->
-                            <img class="grpelem temp_no_id temp_no_img_src" alt=""
-                                 src="resources/images/pageContent/next-u1356.png"/><!-- rasterized frame -->
-                        </div>
-                    </p:commandLink>
-                    <div class="verticalspacer placeholder" data-placeholder-for="page_5_content"><!-- placeholder node --></div>
-                </h:form>
+            <div id="u142-wrapper"><!-- Main Advertising Place -->
+                <div class="museBGSize" id="u142" style="background: transparent url('resources/images/advertImages/full/#{indexController.modelNameFull}') no-repeat center top;"><!-- simple frame --></div>
             </div>
-        </div>
-        <div class="breakpoint" id="bp_320" data-max-width="320"><!-- responsive breakpoint node -->
-            <div class="clearfix borderbox temp_no_id" data-orig-id="page"><!-- group -->
-                <h:form>
-                    <p:commandLink actionListener="#{indexController.modelNamePhone}" update="phoneImage">
-                        <div  class="Button clearfix grpelem temp_no_id" data-orig-id="buttonu1316"><!-- container box -->
-                            <img class="grpelem temp_no_id temp_no_img_src" alt=""
-                                 src="resources/images/pageContent/prew-u13362.png"/><!-- rasterized frame -->
+            <h:form><!-- Main Advertising renew button -->
+                <p:commandLink actionListener="#{indexController.update()}" update="@all" >
+                    <div class="Button transition clearfix" id="buttonu166"><!-- container box -->
+                        <div class="clip_frame grpelem" id="u176"><!-- image -->
+                            <img class="block" id="u176_img" src="resources/images/pageContent/prew.png" alt="" data-image-width="85" data-image-height="85"/>
                         </div>
-                    </p:commandLink>
-                    <div style="text-align: center" class="placeholder" data-placeholder-for="u1304-wrapper_content"><!-- placeholder node -->
-                        <h:graphicImage library="images" name="apImage/phone/#{indexController.apPhoneImage}"
-                                        style="width: 320px;height: 64px;" />
                     </div>
-
-                    <div style="text-align: center" class="placeholder" data-placeholder-for="u1307-wrapper_content"><!-- placeholder node -->
-                        <h:graphicImage library="images" name="advertImages/phone/#{indexController.modelNamePhone}"
-                                        style="width: 320px;height: 320px;" id="phoneImage"/>
-                    </div>
-                    <div class="temp_no_id" data-orig-id="buttonu1366-wrapper">
-                        <a class="nonblock nontext Button clearfix temp_no_id" href="http://google.com" target="_blank" title="Поиск" data-orig-id="buttonu1366"><!-- container box --><div class="clip_frame grpelem temp_no_id" data-orig-id="u1385"><!-- image --><img class="block temp_no_id temp_no_img_src" data-orig-src="resources/images/pageContent/google.png" alt="" data-image-width="146" data-image-height="53" data-orig-id="u1385_img" src="resources/images/pageContent/blank.gif"/></div></a>
-                    </div>
-                    <p:commandLink actionListener="#{indexController.modelNamePhone}" update="phoneImage">
-                        <div class="Button clearfix grpelem temp_no_id" data-orig-id="buttonu1346"><!-- container box -->
-                            <img class="grpelem temp_no_id temp_no_img_src" alt=""
-                                 src="resources/images/pageContent/next-u13562.png"/><!-- rasterized frame -->
+                </p:commandLink>
+                <p:commandLink actionListener="#{indexController.update()}" update="@all">
+                    <div class="Button transition clearfix" id="buttonu186"><!-- container box -->
+                        <div class="clip_frame grpelem" id="u206"><!-- image -->
+                            <img class="block" id="u206_img" src="resources/images/pageContent/next.png" alt="" data-image-width="85" data-image-height="85"/>
                         </div>
-                    </p:commandLink>
-                    <div class="verticalspacer placeholder" data-placeholder-for="page_5_content"><!-- placeholder node --></div>
-                </h:form>
-            </div>
-
+                    </div>
+                </p:commandLink>
+            </h:form>
+            <div class="verticalspacer"></div>
+            <a class="nonblock nontext clip_frame grpelem" id="u104" href="http://google.com"><!-- image --><img class="block" id="u104_img" src="resources/images/pageContent/google.png" alt="" data-image-width="146" data-image-height="53"/></a>
         </div>
         <div style="position: fixed;right: 1px;bottom: 1px;">
             <a href="http://217.77.221.51/wpg/" target="_blank">
