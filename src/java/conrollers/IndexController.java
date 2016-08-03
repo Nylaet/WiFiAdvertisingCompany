@@ -43,6 +43,7 @@ public class IndexController implements Serializable {
 
     public void init() {
         clients = cf.findAll();
+        getAP();
         if (clients.isEmpty()) {
             //default models init
         } else {
@@ -55,7 +56,7 @@ public class IndexController implements Serializable {
                 }
             }
         }
-        sysLog.addSysLog("Application Started");
+        
     }
 
     public String getModelNameFull() {

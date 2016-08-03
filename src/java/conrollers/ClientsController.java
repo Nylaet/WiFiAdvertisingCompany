@@ -84,8 +84,7 @@ public class ClientsController implements Serializable {
                 Message msg = new MimeMessage(sess);
                 msg.setSubject("You link to statistic");
                 msg.setRecipient(Message.RecipientType.TO, new InternetAddress(client.getEmail()));
-                String bodyPart = "Ваша ссылка на просмотр статистики"+
-                        "<a href=\""+client.getUrlPersonal()+"\" value=\"Статистика\" target=\"_blank\" />";
+                String bodyPart = "<a href=\""+client.getUrlPersonal()+"\" value=\"Ваша ссылка на просмотр статистики\" target=\"_blank\" />";
                 msg.setContent(bodyPart, "text/html; charset=utf-8");
                 msg.setSentDate(new Date());
                 Transport.send(msg);
